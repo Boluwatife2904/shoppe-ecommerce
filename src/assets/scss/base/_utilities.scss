@@ -1,0 +1,31 @@
+// TEXT UTULITIES
+.text-capitalize {
+    text-transform: uppercase;
+}
+
+// POSITION UTILITIES
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+// FLEX UTILITIES
+.flex {
+    display: flex;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.items-center {
+    align-items: center;
+}
+
+// WIDTH PROPERTIES
+.w-100 {
+    width: 100%;
+}
