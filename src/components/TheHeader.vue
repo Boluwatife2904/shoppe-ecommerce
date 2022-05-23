@@ -19,7 +19,7 @@ const navigationLinks = ref([
     },
     {
         name: 'Our Story',
-        path: 'our-story'
+        path: 'about'
     },
 ])
 </script>
@@ -33,9 +33,10 @@ const navigationLinks = ref([
         </div>
         <ul class="navigation__links position-relative w-100 items-center space-between">
             <li v-for="link in navigationLinks" :key="link.path" class="navigation__item">
-                <router-link to="" class="navigation__link navigation__link--dark heading-5 text-capitalize">{{
-                        link.name
-                }}</router-link>
+                <router-link :to="{ name: link.path }"
+                    class="navigation__link navigation__link--dark heading-5 text-capitalize">{{
+                            link.name
+                    }}</router-link>
             </li>
         </ul>
         <ul class="navigation__icons flex items-center space-between w-100">

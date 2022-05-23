@@ -93,3 +93,11 @@
         margin-top: 9.6rem;
     }
 }
+
+.page__title {
+    text-transform: capitalize;
+    
+    @media screen and (min-width: 768px) {
+        text-align: center;
+    }
+}

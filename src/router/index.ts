@@ -19,6 +19,16 @@ const router = createRouter({
             component: () => import("../views/ContactView.vue"),
         },
         {
+            path: "/shop",
+            name: "shop",
+            component: () => import("../views/ShopView.vue"),
+        },
+        {
+            path: "/blog",
+            name: "blog",
+            component: () => import("../views/BlogView.vue"),
+        },
+        {
             path: "/terms-of-service",
             name: "terms-of-service",
             component: () => import("../views/AboutView.vue"),
@@ -44,6 +54,9 @@ const router = createRouter({
             component: () => import("../views/PageNotFound.vue"),
         },
     ],
+    scrollBehavior(_, _2, _3) {
+        return { el: "nav", top: 50, behavior: "smooth" };
+    },
 });
 
 export default router;

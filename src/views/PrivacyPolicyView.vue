@@ -1,7 +1,7 @@
 <template>
     <div class="privacy-policy page-layout-margin">
         <div class="privacy-policy__group">
-            <h1 class="heading-1 text-capitalize privacy-policy__title">privacy policy</h1>
+            <h1 class="heading-1 text-capitalize page__title">privacy policy</h1>
         </div>
         <div class="privacy-policy__group">
             <p class="heading-5">Duis rutrum dictum libero quis rutrum. Etiam sed neque aliquam, sollicitudin ante a,
@@ -53,12 +53,6 @@
                 @include typeface(400, 2.6rem, 2.5rem);
                 margin-bottom: 2.4rem;
             }
-        }
-    }
-
-    &__title {
-        @media screen and (min-width: 768px) {
-            text-align: center;
         }
     }
 }
