@@ -1,3 +1,9 @@
 ul {
     list-style: none;
 }
+
+a:link,
+a:visited {
+    text-decoration: none;
+    outline: none;
+}

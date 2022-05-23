@@ -3,4 +3,16 @@
     border: none;
     background: transparent;
     outline: none;
+
+    &--medium {
+        padding: 16px 49px;
+    }
+
+    &--outline-black {
+        @include typeface(700, 1.6rem, 2.1rem);
+        border: 1px solid var(--black-color);
+        background: transparent;
+        border-radius: 4px;
+        color: var(--black-color);
+    }
 }
