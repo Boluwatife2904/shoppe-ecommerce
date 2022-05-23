@@ -1,36 +1,42 @@
 import { createRouter, createWebHistory } from "vue-router";
-import MainLayout from "@/layouts/MainLayout.vue";
-import DashboardLayout from "@/layouts/DashboardLayout.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
             path: "/",
-            component: MainLayout,
-            children: [
-                {
-                    path: "",
-                    name: "index",
-                    component: () => import("../views/HomeView.vue"),
-                },
-                {
-                    path: "/:catchAll(.*)",
-                    name: "error-404",
-                    component: () => import("../views/PageNotFound.vue"),
-                },
-            ],
+            name: "index",
+            component: () => import("../views/HomeView.vue"),
+        },
+        {
+            path: "/about",
+            name: "about",
+            component: () => import("../views/AboutView.vue"),
+        },
+        {
+            path: "/contact",
+            name: "contact",
+            component: () => import("../views/ContactView.vue"),
+        },
+        {
+            path: "/terms-of-service",
+            name: "terms-of-service",
+            component: () => import("../views/AboutView.vue"),
+        },
+        {
+            path: "/shipping-and-returns",
+            name: "shipping-and-returns",
+            component: () => import("../views/ShippingAndReturnsView.vue"),
         },
         {
             path: "/dashboard",
-            component: DashboardLayout,
-            children: [
-                {
-                    name: "dashboard",
-                    path: "",
-                    component: () => import("../views/AboutView.vue"),
-                },
-            ],
+            name: "dashboard",
+            component: () => import("../views/DashboardIndexView.vue"),
+        },
+        {
+            path: "/:catchAll(.*)",
+            name: "error-404",
+            component: () => import("../views/PageNotFound.vue"),
         },
     ],
 });

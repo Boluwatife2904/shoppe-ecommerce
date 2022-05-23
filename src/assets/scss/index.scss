@@ -1,6 +1,6 @@
 // ABSTRACT
 @use "./abstract/variables" as *;
-@use "./abstract/mixins" as *;
+@import "./abstract/mixins";
 
 // LAYOUT
 @import "layout/footer";
@@ -14,4 +14,5 @@
 @import "base/utilities";
 
 // COMPONENTS
-@import "components/links"
+@import "components/links";
+@import "components/button";

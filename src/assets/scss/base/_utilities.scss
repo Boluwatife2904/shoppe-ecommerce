@@ -1,6 +1,14 @@
 // TEXT UTULITIES
 .text-capitalize {
+    text-transform: capitalize;
+}
+
+.text-uppercase {
     text-transform: uppercase;
+}
+
+.error-text {
+    color: var(--error-color);
 }
 
 // POSITION UTILITIES
@@ -25,7 +33,36 @@
     align-items: center;
 }
 
+.items-start {
+    align-items: flex-start;
+}
+
 // WIDTH PROPERTIES
 .w-100 {
     width: 100%;
+}
+
+// DISPLAY PROPERTIES
+.block {
+    display: block;
+}
+
+.inline-block {
+    display: inline-block
+}
+
+.hide-on-desktop {
+    display: block;
+
+    @media screen and (min-width: 768px) {
+        display: none;
+    }
+}
+
+.hide-on-mobile {
+    display: none;
+
+    @media screen and (min-width: 768px) {
+        display: block;
+    }
 }
