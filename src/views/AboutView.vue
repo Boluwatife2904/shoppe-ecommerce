@@ -1,8 +1,8 @@
 <template>
     <div class="about-page page-layout-margin">
         <div class="page-group">
-            <h1 class="heading-1 page__title about-page--title">about</h1>
-            <p class="heading-3 about-page--subtitle text-center hide-on-mobile">Who we are and why we do what we do!
+            <h1 class="heading-1 page__title about-page__title">about</h1>
+            <p class="heading-3 about-page__subtitle text-center hide-on-mobile">Who we are and why we do what we do!
             </p>
             <p class="heading-5">Duis rutrum dictum libero quis rutrum. Etiam sed neque aliquam, sollicitudin ante a,
                 gravida arcu. Nam
@@ -43,7 +43,7 @@
 .about-page {
     max-width: 67rem;
 
-    &--title {
+    &__title {
         margin-bottom: 3.9rem;
 
         @media screen and (min-width: 768px) {
@@ -51,7 +51,7 @@
         }
     }
 
-    &--subtitle {
+    &__subtitle {
         margin-bottom: 4.6rem;
     }
 }
