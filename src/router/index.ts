@@ -31,7 +31,7 @@ const router = createRouter({
         {
             path: "/terms-of-service",
             name: "terms-of-service",
-            component: () => import("../views/AboutView.vue"),
+            component: () => import("../views/TermsOfServiceView.vue"),
         },
         {
             path: "/shipping-and-returns",

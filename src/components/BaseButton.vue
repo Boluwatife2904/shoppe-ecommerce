@@ -1,14 +1,42 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+
+type ButtonType = 'submit' | 'button' | 'reset';
+
 interface Props {
     variant?: string
+    text?: string
+    size?: string
+    type?: ButtonType
 }
 
-defineProps<Props>()
+const props = defineProps<Props>();
+
+const variantClasses = computed(() => {
+    switch (props.variant) {
+        case 'solid-black':
+            return 'button--solid-black'
+        default:
+            return '';
+    }
+})
+
+const sizeClasses = computed(() => {
+    switch (props.size) {
+        case 'medium':
+            return 'button--medium'
+        case 'large':
+            return 'button--large'
+        default:
+            return '';
+    }
+})
 </script>
 
 
 <template>
-    <button class="button">
-        <slot></slot>
+    <button :type="type" class="button" :class="[variantClasses, sizeClasses]">
+        <span v-if="!!props.text">{{ props.text }}</span>
+        <slot v-else></slot>
     </button>
 </template>

@@ -8,11 +8,25 @@
         padding: 16px 49px;
     }
 
+    &--large {
+        padding: 16px 49px;
+        width: 100%;
+        max-width: 500px
+    }
+
     &--outline-black {
         @include typeface(700, 1.6rem, 2.1rem);
         border: 1px solid var(--black-color);
         background: transparent;
         border-radius: 4px;
         color: var(--black-color);
+    }
+
+    &--solid-black {
+        @include typeface(700, 1.6rem, 2.1rem);
+        border: 1px solid transparent;
+        background: var(--black-color);
+        border-radius: 4px;
+        color: var(--white-color);
     }
 }

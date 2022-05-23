@@ -1,0 +1,23 @@
+.input {
+    &__field {
+        @include typeface(400, 1.6rem, 2.7rem);
+
+        background-color: transparent;
+        border: none;
+        color: var(--black-color);
+        border-bottom: 0.1rem solid var(--black-color);
+        outline: none;
+        padding-bottom: 1.3rem;
+        width: 100%;
+
+        &::placeholder {
+            color: var(--dark-gray);
+        }
+    }
+
+    &__error {
+        @include typeface(400, 1.4rem, 2rem);
+        left: 0;
+        bottom: -3rem;
+    }
+}
