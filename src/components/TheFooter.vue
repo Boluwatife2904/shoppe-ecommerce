@@ -82,7 +82,8 @@ const subscribeToNewsletter = () => {
             <p class="footer__copyright heading-5">
                 &copy; {{ currentYear }} Shelly.
                 <router-link to="" class="navigation__link navigation__link--light">Terms of use</router-link> and
-                <router-link to="" class="navigation__link navigation__link--light">privacy policy</router-link>
+                <router-link :to="{ name: 'privacy-policy' }" class="navigation__link navigation__link--light">privacy
+                    policy</router-link>
             </p>
             <ul class="footer__socials w-100 flex items-center space-between">
                 <li v-for="social in footerSocials" :key="social.type" class="navigation__item">

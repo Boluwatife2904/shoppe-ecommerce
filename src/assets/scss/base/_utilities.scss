@@ -7,6 +7,22 @@
     text-transform: uppercase;
 }
 
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-justity {
+    text-align: justify;
+}
+
 .error-text {
     color: var(--error-color);
 }
@@ -48,7 +64,7 @@
 }
 
 .inline-block {
-    display: inline-block
+    display: inline-block;
 }
 
 .hide-on-desktop {
@@ -64,5 +80,16 @@
 
     @media screen and (min-width: 768px) {
         display: block;
+    }
+}
+
+// PAGE UTILITIES
+.page-layout-margin {
+    margin-top: 7.1rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media screen and (min-width: 768px) {
+        margin-top: 9.6rem;
     }
 }
