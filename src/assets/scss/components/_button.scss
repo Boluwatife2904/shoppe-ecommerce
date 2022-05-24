@@ -11,7 +11,7 @@
     &--large {
         padding: 16px 49px;
         width: 100%;
-        max-width: 500px
+        max-width: 500px;
     }
 
     &--outline-black {
@@ -23,10 +23,14 @@
     }
 
     &--solid-black {
-        @include typeface(700, 1.6rem, 2.1rem);
+        @include typeface(400, 1.6rem, 2.1rem);
         border: 1px solid transparent;
         background: var(--black-color);
         border-radius: 4px;
         color: var(--white-color);
+    }
+
+    &--bold {
+        font-weight: 700;
     }
 }

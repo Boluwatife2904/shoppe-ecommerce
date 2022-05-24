@@ -38,7 +38,7 @@ const message = ref("")
                 </div>
             </div>
             <div class="contact-form__submit text-center">
-                <BaseButton type="button" text="SEND" variant="solid-black" size="large" />
+                <BaseButton type="button" text="SEND" variant="solid-black" size="large" :bold="true" />
             </div>
         </form>
     </div>

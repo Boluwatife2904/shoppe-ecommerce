@@ -8,6 +8,7 @@ interface Props {
     text?: string
     size?: string
     type?: ButtonType
+    bold?: boolean
 }
 
 const props = defineProps<Props>();
@@ -35,7 +36,7 @@ const sizeClasses = computed(() => {
 
 
 <template>
-    <button :type="type" class="button" :class="[variantClasses, sizeClasses]">
+    <button :type="type" class="button" :class="[variantClasses, sizeClasses, { 'button--bold': props.bold }]">
         <span v-if="!!props.text">{{ props.text }}</span>
         <slot v-else></slot>
     </button>
