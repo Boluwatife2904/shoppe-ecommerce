@@ -7,6 +7,9 @@ import SearchIcon from "@/components/icons/IconSearch.vue";
 import MenuIcon from "@/components/icons/IconMenu.vue";
 import { RouterLink } from "vue-router";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const navigationLinks = ref([
     {
@@ -22,6 +25,10 @@ const navigationLinks = ref([
         path: 'about'
     },
 ])
+
+const goToDashboard = () => {
+    router.push({ name: 'auth' })
+}
 </script>
 
 <template>
@@ -46,7 +53,7 @@ const navigationLinks = ref([
             <base-button>
                 <CartIcon />
             </base-button>
-            <base-button class="hide-on-mobile">
+            <base-button class="hide-on-mobile" @click="goToDashboard">
                 <UserIcon />
             </base-button>
             <base-button class="hide-on-desktop">

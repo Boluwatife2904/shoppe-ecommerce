@@ -5,11 +5,11 @@ import TheHeader from "@/components/TheHeader.vue";
 </script>
 
 <template>
-    <div class="main-layout">
+    <main class="main-layout">
         <TheHeader />
         <RouterView />
         <TheFooter />
-    </div>
+    </main>
 </template>
 
 <style lang="scss">
