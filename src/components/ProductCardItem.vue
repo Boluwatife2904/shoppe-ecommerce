@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import BaseButton from "./BaseButton.vue";
+import CartIcon from "./icons/IconCart.vue";
+import EyeIcon from "./icons/IconEye.vue";
+import HeartIcon from "./icons/IconHeart.vue"
+
 interface Product {
     image: string,
     price: number
@@ -14,8 +19,27 @@ defineProps<Props>()
 
 <template>
     <div class="product">
-        <div class="product__image">
+        <div class="product__image position-relative">
             <img :src="product.image" :alt="product.name">
+            <div class="product__image--overlay position-absolute flex items-center content-center">
+                <ul class="product__icons flex items-center flex-center">
+                    <li class="product__icon">
+                        <base-button>
+                            <CartIcon />
+                        </base-button>
+                    </li>
+                    <li class="product__icon">
+                        <base-button>
+                            <EyeIcon />
+                        </base-button>
+                    </li>
+                    <li class="product__icon">
+                        <base-button>
+                            <HeartIcon />
+                        </base-button>
+                    </li>
+                </ul>
+            </div>
         </div>
         <div class="product__details">
             <h3 class="product__name heading-3">{{ product.name }}</h3>
@@ -30,6 +54,7 @@ defineProps<Props>()
 
     &__image {
         margin-bottom: .6rem;
+        position: relative;
 
         @media screen and (min-width: 600px) {
             margin-bottom: 2.4rem;
@@ -41,6 +66,29 @@ defineProps<Props>()
             height: auto;
             width: 100%;
         }
+
+        &--overlay {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: .4rem .4rem 0 0;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all .2s;
+        }
+    }
+
+    &:hover {
+        .product__image--overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    &__icons {
+        gap: 3rem;
     }
 
     &__name {
@@ -50,7 +98,5 @@ defineProps<Props>()
             margin-bottom: 1.6rem;
         }
     }
-
-    &__price {}
 }
 </style>

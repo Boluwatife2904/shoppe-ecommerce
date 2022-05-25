@@ -66,8 +66,8 @@ const goToDashboard = () => {
 <style lang="scss">
 .navigation {
     justify-content: space-between;
-    padding-bottom: 17px;
-    border-bottom: 1px solid var(--light-gray);
+    padding-bottom: 1.7rem;
+    border-bottom: .1rem solid var(--light-gray);
 
     @media screen and (min-width: 768px) {
         justify-content: flex-start;
@@ -95,7 +95,7 @@ const goToDashboard = () => {
 
     &__icons {
         max-width: 5.4rem;
-        gap: 16px;
+        gap: 1.6rem;
 
         @media screen and (min-width: 768px) {
             max-width: 11.8rem;

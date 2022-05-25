@@ -5,28 +5,28 @@
     outline: none;
 
     &--medium {
-        padding: 16px 49px;
+        padding: 1.6rem 4.9rem;
     }
 
     &--large {
-        padding: 16px 49px;
+        padding: 1.6rem 4.9rem;
         width: 100%;
-        max-width: 500px;
+        max-width: 50rem;
     }
 
     &--outline-black {
         @include typeface(700, 1.6rem, 2.1rem);
-        border: 1px solid var(--black-color);
+        border: .1rem solid var(--black-color);
         background: transparent;
-        border-radius: 4px;
+        border-radius: .4rem;
         color: var(--black-color);
     }
 
     &--solid-black {
         @include typeface(400, 1.6rem, 2.1rem);
-        border: 1px solid transparent;
+        border: .1rem solid transparent;
         background: var(--black-color);
-        border-radius: 4px;
+        border-radius: .4rem;
         color: var(--white-color);
     }
 

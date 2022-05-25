@@ -57,6 +57,10 @@
     align-items: flex-start;
 }
 
+.content-center {
+    justify-content: center;
+}
+
 // WIDTH PROPERTIES
 .w-100 {
     width: 100%;
@@ -100,7 +104,7 @@
 
 .page__title {
     text-transform: capitalize;
-    
+
     @media screen and (min-width: 768px) {
         text-align: center;
     }

@@ -55,7 +55,7 @@ const message = ref("")
     }
 
     &__subtitle {
-        max-width: 561px;
+        max-width: 56.1rem;
         margin: 0 auto 10.8rem;
     }
 }
