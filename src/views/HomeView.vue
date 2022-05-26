@@ -12,7 +12,7 @@ const ProductStore = useProductStore();
         <section class="shop-section">
             <div class="shop-section__heading flex items-center space-between">
                 <h2 class="heading-1">Shop The Latest</h2>
-                <router-link to="{ name: 'shop'}" class="navigation__link navigation__link--accent heading-4">View All
+                <router-link :to="{ name: 'shop'}" class="navigation__link navigation__link--accent heading-4">View All
                 </router-link>
             </div>
             <product-card-list>

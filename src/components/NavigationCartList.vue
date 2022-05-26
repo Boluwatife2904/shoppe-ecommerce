@@ -2,18 +2,25 @@
 import { RouterLink } from 'vue-router';
 import { useProductStore } from '@/stores/ProductStore';
 import NavigationCartItem from './NavigationCartItem.vue';
+import { watch } from 'vue';
+import { useRoute } from 'vue-router';
+const route = useRoute();
 
 const ProductStore = useProductStore();
-defineEmits(['close-menu'])
+const emit = defineEmits(['close-menu'])
+
+watch(route, () => {
+    emit("close-menu");
+})
 </script>
 
 <template>
     <div class="navigation-cart flex flex-column">
         <div class="navigation-cart__body position-relation">
             <button class="button navigation-cart__close navigation-cart__close--mobile position-absolute"
-                @click="$emit('close-menu')">&#10094;</button>
+                @click="emit('close-menu')">&#10094;</button>
             <button class="button navigation-cart__close navigation-cart__close--desktop position-absolute"
-                @click="$emit('close-menu')">&times;</button>
+                @click="emit('close-menu')">&times;</button>
             <h5 class="navigation-cart__title heading-5">Shopping bag</h5>
             <p class="navigation-cart__count body-small">5 items</p>
             <div class="navigation-cart__products">
@@ -28,7 +35,7 @@ defineEmits(['close-menu'])
                 <p class="heading-5">$ 100,00</p>
             </div>
             <div class="navigation-cart__action">
-                <router-link to=""
+                <router-link :to="{ name: 'cart'}"
                     class="flex items-center content-center button button--large button--outline-black body-large">
                     VIEW CART
                 </router-link>
@@ -55,7 +62,6 @@ defineEmits(['close-menu'])
     }
 
     &__close {
-
         &--desktop {
             display: none;
             right: 1.6rem;
@@ -74,9 +80,7 @@ defineEmits(['close-menu'])
             @media screen and (min-width: 480px) {
                 display: none;
             }
-
         }
-
     }
 
     &__body {
