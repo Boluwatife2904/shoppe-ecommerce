@@ -8,6 +8,7 @@ import MenuIcon from "@/components/icons/IconMenu.vue";
 import { RouterLink } from "vue-router";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import NavigationCartList from "./NavigationCartList.vue";
 
 const router = useRouter();
 
@@ -28,6 +29,12 @@ const navigationLinks = ref([
 
 const goToDashboard = () => {
     router.push({ name: 'auth' })
+}
+
+const showCartSideMenu = ref(false);
+
+const toggleCartSideMenu = (value: boolean): void => {
+    showCartSideMenu.value = value;
 }
 </script>
 
@@ -51,7 +58,7 @@ const goToDashboard = () => {
                 <SearchIcon />
             </base-button>
             <base-button>
-                <CartIcon />
+                <CartIcon @click="toggleCartSideMenu(true)" />
             </base-button>
             <base-button class="hide-on-mobile" @click="goToDashboard">
                 <UserIcon />
@@ -61,6 +68,11 @@ const goToDashboard = () => {
             </base-button>
         </ul>
     </nav>
+    <!-- <teleport to="body"> -->
+    <transition name="slideIn" mode="out-in" appear>
+        <NavigationCartList v-if="showCartSideMenu" @close-menu="toggleCartSideMenu(false)" />
+    </transition>
+    <!-- </teleport> -->
 </template>
 
 <style lang="scss">
@@ -106,5 +118,21 @@ const goToDashboard = () => {
             line-height: 0;
         }
     }
+}
+
+.slideIn-enter-active,
+.slideIn-leave-active {
+    transition: all .2s ease-in;
+}
+
+
+.slideIn-enter-from,
+.slideIn-leave-to {
+    transform: translate(100%);
+}
+
+.slideIn-enter-to,
+.slideIn-leave-from {
+    transform: translate(0);
 }
 </style>

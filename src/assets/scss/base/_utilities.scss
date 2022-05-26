@@ -31,6 +31,10 @@
     color: var(--accent-color);
 }
 
+.dark-gray-text {
+    color: var(--dark-gray);
+}
+
 // POSITION UTILITIES
 .position-relative {
     position: relative;
@@ -43,6 +47,14 @@
 // FLEX UTILITIES
 .flex {
     display: flex;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-column {
+    flex-direction: column;
 }
 
 .space-between {
