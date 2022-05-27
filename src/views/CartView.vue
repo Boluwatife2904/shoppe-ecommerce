@@ -1,15 +1,22 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
-import CartShippingCalculator from "@/components/CartShippingCalculator.vue"
+import { useProductStore } from '@/stores/ProductStore';
+import CartShippingCalculator from "@/components/CartShippingCalculator.vue";
+import CartProductList from '@/components/CartProductList.vue';
+import CartProductItem from '@/components/CartProductItem.vue';
+
+const ProductStore = useProductStore();
+
+const threeProducts = ProductStore.products.slice(0, 3)
 </script>
 
 <template>
     <div class="shopping-cart page-layout-margin">
         <h2 class="shopping-cart__title heading-1 page__title">Shopping Cart</h2>
         <div class="shopping-cart__wrapper">
-            <div class="shopping-cart__items">
-
-            </div>
+            <cart-product-list>
+                <CartProductItem v-for="product in threeProducts" :product="product" />
+            </cart-product-list>
             <div class="shopping-cart__totals cart-totals">
                 <h3 class="cart-totals__title">Cart Totals</h3>
                 <div class="cart-totals__subtotal">
@@ -43,7 +50,11 @@ import CartShippingCalculator from "@/components/CartShippingCalculator.vue"
 <style lang="scss">
 .shopping-cart {
     &__title {
-        margin-bottom: 6.4rem;
+        margin-bottom: 3.2rem;
+
+        @media screen and (min-width: 600px) {
+            margin-bottom: 6.4rem;
+        }
     }
 
     &__wrapper {
@@ -55,8 +66,6 @@ import CartShippingCalculator from "@/components/CartShippingCalculator.vue"
     }
 
     &__totals {
-        // padding: 1.5rem 1.6rem;
-
         @media screen and (min-width: 768px) {
             padding: 3.9rem 5.9rem;
         }
@@ -111,7 +120,7 @@ import CartShippingCalculator from "@/components/CartShippingCalculator.vue"
     }
 
     &__total {
-        border-top: 1px solid var(--gray);
+        border-top: .1rem solid var(--gray);
         padding-top: 1.8rem;
         margin-bottom: 2.5rem;
 

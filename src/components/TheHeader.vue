@@ -68,11 +68,11 @@ const toggleCartSideMenu = (value: boolean): void => {
             </base-button>
         </ul>
     </nav>
-    <!-- <teleport to="body"> -->
+    <teleport to="body">
     <transition name="slideIn" mode="out-in" appear>
         <NavigationCartList v-if="showCartSideMenu" @close-menu="toggleCartSideMenu(false)" />
     </transition>
-    <!-- </teleport> -->
+    </teleport>
 </template>
 
 <style lang="scss">

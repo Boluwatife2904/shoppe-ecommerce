@@ -75,7 +75,7 @@ defineProps<Props>()
             top: 0;
             left: 0;
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(2rem);
             transition: all .2s;
         }
     }

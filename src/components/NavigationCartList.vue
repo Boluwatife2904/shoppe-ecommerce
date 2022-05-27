@@ -47,7 +47,7 @@ watch(route, () => {
 <style lang="scss">
 .navigation-cart {
     background: var(--white-color);
-    border: 1px solid var(--gray);
+    border: .1rem solid var(--gray);
     height: 100vh;
     width: 100%;
     position: fixed;
@@ -110,7 +110,7 @@ watch(route, () => {
     }
 
     &__footer {
-        border-top: 1px solid var(--gray);
+        border-top: .1rem solid var(--gray);
         flex: 1 0 14.9rem;
         padding: 1.6rem 2.4rem;
 
