@@ -14,6 +14,17 @@
         max-width: 50rem;
     }
 
+    &--large-medium {
+        padding: 1.6rem 5.2rem;
+        width: 100%;
+        max-width: 100%;
+
+        @media screen and (min-width: 768px) {
+            width: max-content;
+            max-width: max-content;
+        }
+    }
+
     &--outline-black {
         @include typeface(700, 1.6rem, 2.1rem);
         border: .1rem solid var(--black-color);
