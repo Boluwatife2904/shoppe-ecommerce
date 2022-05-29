@@ -39,7 +39,7 @@ const threeProducts = ProductStore.products.slice(0, 3);
                     <span class="body-large">$ 87,00</span>
                 </div>
                 <div class="cart-totals__checkout">
-                    <router-link to="" class="navigation__link button button--large flex items-center content-center button--solid-black"> CHECKOUT</router-link>
+                    <router-link :to="{ name: 'checkout' }" class="navigation__link button button--large flex items-center content-center button--solid-black"> CHECKOUT</router-link>
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@ const threeProducts = ProductStore.products.slice(0, 3);
 
     &__totals {
         margin-top: 3.9rem;
-        
+
         @media screen and (min-width: 768px) {
             padding: 3.9rem 5.9rem;
         }

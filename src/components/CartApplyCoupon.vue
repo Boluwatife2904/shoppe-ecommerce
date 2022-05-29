@@ -26,7 +26,7 @@ const couponCode = ref("");
     }
 
     @media screen and (min-width: 992px) {
-        gap: 2.4rem 7.6rem;
+        gap: 2.4rem 2rem;
     }
 
     &__input {

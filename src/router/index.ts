@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
+        // OTHER GENERIC PAGE (HOME, ABOUT, CONTACT, TERMS OF SERVICE........)
         {
             path: "/",
             name: "index",
@@ -43,6 +44,7 @@ const router = createRouter({
             name: "privacy-policy",
             component: () => import("../views/PrivacyPolicyView.vue"),
         },
+        // AUTH PAGES
         {
             path: "/forgot-password",
             name: "forgot-password",
@@ -53,16 +55,24 @@ const router = createRouter({
             name: "auth",
             component: () => import("../views/AuthView.vue"),
         },
+        // CART AND CHECKOUT PAGES
         {
             path: "/cart",
             name: "cart",
             component: () => import("../views/CartView.vue"),
         },
         {
+            path: "/checkout",
+            name: "checkout",
+            component: () => import("../views/CheckoutView.vue"),
+        },
+        // DASHBOARD PAGES
+        {
             path: "/dashboard",
             name: "dashboard",
             component: () => import("../views/DashboardIndexView.vue"),
         },
+        // ERROR 404 PAGE
         {
             path: "/:catchAll(.*)",
             name: "error-404",
