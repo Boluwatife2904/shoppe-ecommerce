@@ -1,33 +1,91 @@
 <script setup lang="ts">
-import BaseButton from "@/components/BaseButton.vue";
-import CartApplyCoupon from "@/components/CartApplyCoupon.vue";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-const router = useRouter();
-
-const goToLogin = () => router.push({ name: "auth" });
+import { RouterLink } from "vue-router";
+import BaseButton from "@/components/BaseButton.vue";
+import CartApplyCoupon from "@/components/CartApplyCoupon.vue";
+import BaseInput from "@/components/BaseInput.vue";
+import BaseSelect from "@/components/BaseSelect.vue";
+import BaseCheckbox from "../components/BaseCheckbox.vue";
 
 const showApplyCouponContainer = ref(false);
-const toggleShowApplyCouponContainer = (value: boolean) => (showApplyCouponContainer.value = value);
+const toggleShowApplyCouponContainer = () => (showApplyCouponContainer.value = !showApplyCouponContainer.value);
+
+const firstName = ref("");
+const lastName = ref("");
+const companyName = ref("");
+const streetAddress = ref("");
+const postCode = ref("");
+const townOrCity = ref("");
+const emailAddress = ref("");
+const phoneNumber = ref("");
+const orderNotes = ref("");
+const country = ref("");
+const countries = ref(["Nigeria"]);
+const createAccount = ref(false);
+const shipToDifferentAddress = ref(false);
 </script>
 
 <template>
-    <div class="contact-page page-layout-margin">
-        <h1 class="page__title heading-1 contact-page__title">checkout</h1>
-        <div class="contact-page__heading">
-            <p class="heading-5"><span class="dark-gray-text">Returning Customer?</span> <base-button @click.native="goToLogin">Click here to login</base-button></p>
-            <p class="heading-5"><span class="dark-gray-text">Have a coupon?</span> <base-button @click.native="toggleShowApplyCouponContainer(true)">Click here to enter your code</base-button></p>
+    <div class="checkout-page page-layout-margin">
+        <h1 class="page__title heading-1 checkout-page__title">checkout</h1>
+        <div class="checkout-page__heading">
+            <p class="heading-5"><span class="dark-gray-text">Returning Customer?</span> <router-link :to="{ name: 'auth' }" class="navigation__link navigation__link--dark">Click here to login</router-link></p>
+            <p class="heading-5"><span class="dark-gray-text">Have a coupon?</span> <base-button @click.native="toggleShowApplyCouponContainer">Click here to enter your code</base-button></p>
 
-            <div v-if="showApplyCouponContainer" class="contact-page__coupon">
-                <p class="heading-5 dark-gray-text contact-page__coupon-title">If you have a coupon code, please apply it below.</p>
+            <div v-if="showApplyCouponContainer" class="checkout-page__coupon">
+                <p class="heading-5 dark-gray-text checkout-page__coupon-title">If you have a coupon code, please apply it below.</p>
                 <CartApplyCoupon />
+            </div>
+        </div>
+        <div class="checkout-page__wrapper">
+            <div class="checkout-page__billing">
+                <h1 class="checkout-page__title">Billing Details</h1>
+                <form class="billing-form">
+                    <div class="billing-form__input flex billing-form__names">
+                        <BaseInput v-model="firstName" type="text" id="company-name" placeholder="First Name *" />
+                        <BaseInput v-model="lastName" type="text" id="company-name" placeholder="Last Name *" />
+                    </div>
+                    <div class="billing-form__input">
+                        <BaseInput v-model="companyName" type="text" id="company-name" placeholder="Company Name" />
+                    </div>
+                    <div class="billing-form__input">
+                        <BaseSelect v-model="country" :options="countries" name="country" placeholder="Country *" size="large" />
+                    </div>
+                    <div class="billing-form__input">
+                        <BaseInput v-model="streetAddress" type="text" id="street-address" placeholder="Street Address *" />
+                    </div>
+                    <div class="billing-form__input">
+                        <BaseInput v-model="postCode" type="text" id="post-code" placeholder="Post Code / ZIP*" />
+                    </div>
+                    <div class="billing-form__input">
+                        <BaseInput v-model="townOrCity" type="text" id="town-or-city" placeholder="Town or City *" />
+                    </div>
+                    <div class="billing-form__input">
+                        <BaseInput v-model="phoneNumber" type="text" id="phone-number" placeholder="Phone *" />
+                    </div>
+                    <div class="billing-form__input">
+                        <BaseInput v-model="emailAddress" type="email" id="email-address" placeholder="Email *" />
+                    </div>
+                    <div class="billing-form__input flex flex-column billing-form__checkboxes">
+                        <BaseCheckbox v-model="createAccount" id="create-account" label="Create an account?" />
+                        <BaseCheckbox v-model="shipToDifferentAddress" id="ship-to-different-address" label="Ship to a different address?" />
+                    </div>
+                    <div class="billing-form__input">
+                        <BaseInput v-model="orderNotes" type="text" id="order-notes" placeholder="Order Notes" />
+                    </div>
+                </form>
+            </div>
+            <div class="checkout-page__order">
+                <h1 class="checkout-page__title">Your Order</h1>
+                <div class="order-details"></div>
             </div>
         </div>
     </div>
 </template>
 
 <style lang="scss">
-.contact-page {
+.checkout-page {
     &__title {
         margin-bottom: 6.4rem;
     }
@@ -49,5 +107,46 @@ const toggleShowApplyCouponContainer = (value: boolean) => (showApplyCouponConta
             margin-bottom: 3.9rem;
         }
     }
+
+    &__wrapper {
+        display: grid;
+        margin-top: 4.8rem;
+        gap: 8.8rem;
+
+        @media screen and (min-width: 768px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    &__title {
+        font-size: 2.6rem;
+        line-height: 2.5rem;
+        margin-bottom: 3.9rem;
+        font-weight: 400;
+    }
+}
+
+.billing-form {
+    &__names {
+        gap: 4rem;
+        flex-direction: column;
+
+        @media screen and (min-width: 768px) {
+            flex-direction: row;
+        }
+    }
+
+    &__input {
+        margin-bottom: 3.7rem;
+    }
+
+    &__checkboxes {
+        gap: 1.8rem;
+    }
+}
+
+.order-details {
+    background-color: var(--light-gray);
+    padding: 3.9rem 5.9rem 4.8rem;
 }
 </style>
