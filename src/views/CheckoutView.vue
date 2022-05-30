@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useRouter } from "vue-router";
 import { RouterLink } from "vue-router";
 import BaseButton from "@/components/BaseButton.vue";
 import CartApplyCoupon from "@/components/CartApplyCoupon.vue";
 import BaseInput from "@/components/BaseInput.vue";
 import BaseSelect from "@/components/BaseSelect.vue";
-import BaseCheckbox from "../components/BaseCheckbox.vue";
+import BaseCheckbox from "@/components/BaseCheckbox.vue";
+import OrderSummary from "@/components/OrderSummary.vue";
 
 const showApplyCouponContainer = ref(false);
 const toggleShowApplyCouponContainer = () => (showApplyCouponContainer.value = !showApplyCouponContainer.value);
@@ -78,7 +78,7 @@ const shipToDifferentAddress = ref(false);
             </div>
             <div class="checkout-page__order">
                 <h1 class="checkout-page__title">Your Order</h1>
-                <div class="order-details"></div>
+                <OrderSummary />
             </div>
         </div>
     </div>
@@ -91,7 +91,9 @@ const shipToDifferentAddress = ref(false);
     }
 
     &__heading {
-        max-width: 50%;
+        @media screen and (min-width: 768px) {
+            max-width: 50%;
+        }
 
         button {
             font-size: 1.6rem;
@@ -111,18 +113,30 @@ const shipToDifferentAddress = ref(false);
     &__wrapper {
         display: grid;
         margin-top: 4.8rem;
-        gap: 8.8rem;
+        gap: 3.9rem;
 
         @media screen and (min-width: 768px) {
+            gap: 8.8rem;
             grid-template-columns: repeat(2, 1fr);
         }
     }
 
     &__title {
-        font-size: 2.6rem;
-        line-height: 2.5rem;
-        margin-bottom: 3.9rem;
+        font-size: 1.8rem;
+        line-height: 2.1rem;
+        margin-bottom: 2.2rem;
         font-weight: 400;
+
+        @media screen and (min-width: 600px) {
+            font-size: 2rem;
+            line-height: 2.4rem;
+        }
+
+        @media screen and (min-width: 992px) {
+            font-size: 2.6rem;
+            line-height: 2.5rem;
+            margin-bottom: 3.9rem;
+        }
     }
 }
 
@@ -143,10 +157,5 @@ const shipToDifferentAddress = ref(false);
     &__checkboxes {
         gap: 1.8rem;
     }
-}
-
-.order-details {
-    background-color: var(--light-gray);
-    padding: 3.9rem 5.9rem 4.8rem;
 }
 </style>
