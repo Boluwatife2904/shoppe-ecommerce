@@ -55,7 +55,7 @@ const router = createRouter({
             name: "auth",
             component: () => import("../views/AuthView.vue"),
         },
-        // CART AND CHECKOUT PAGES
+        // CART, CHECKOUT AND ORDER CONFIRMATION PAGES
         {
             path: "/cart",
             name: "cart",
@@ -65,6 +65,11 @@ const router = createRouter({
             path: "/checkout",
             name: "checkout",
             component: () => import("../views/CheckoutView.vue"),
+        },
+        {
+            path: "/order-confirmation/:slug",
+            name: "order-confirmation",
+            component: () => import("../views/OrderConfirmationView.vue"),
         },
         // DASHBOARD PAGES
         {

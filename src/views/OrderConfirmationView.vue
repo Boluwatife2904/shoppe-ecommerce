@@ -1,0 +1,37 @@
+<script setup lang="ts">
+import { useRoute } from "vue-router";
+import BaseAlert from "../components/BaseAlert.vue";
+import OrderSummary from "../components/OrderSummary.vue";
+
+const route = useRoute();
+
+console.log(route.query);
+</script>
+
+<template>
+    <div class="order-confirmation">
+        <div v-if="!!route.query.newOrder" class="order-confirmation__alert">
+            <BaseAlert text="We've received your order" />
+        </div>
+        <div class="order-confirmation__content">
+            <div class="order-confirmation__details"></div>
+            <div class="order-confirmation__summary">
+                <OrderSummary order-title="Order Summary" :can-place-order="false" />
+            </div>
+        </div>
+    </div>
+</template>
+
+<style lang="scss">
+.order-confirmation {
+    &__alert {
+        margin-top: 9.6rem;
+    }
+
+    &__content {
+        margin-top: 9.6rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+</style>

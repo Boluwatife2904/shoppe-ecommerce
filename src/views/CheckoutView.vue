@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
 import BaseButton from "@/components/BaseButton.vue";
 import CartApplyCoupon from "@/components/CartApplyCoupon.vue";
 import BaseInput from "@/components/BaseInput.vue";
 import BaseSelect from "@/components/BaseSelect.vue";
 import BaseCheckbox from "@/components/BaseCheckbox.vue";
 import OrderSummary from "@/components/OrderSummary.vue";
+
+const router = useRouter();
 
 const showApplyCouponContainer = ref(false);
 const toggleShowApplyCouponContainer = () => (showApplyCouponContainer.value = !showApplyCouponContainer.value);
@@ -24,6 +26,18 @@ const country = ref("");
 const countries = ref(["Nigeria"]);
 const createAccount = ref(false);
 const shipToDifferentAddress = ref(false);
+
+const placeOrder = () => {
+    router.push({
+        name: "order-confirmation",
+        params: {
+            slug: "1324353543",
+        },
+        query: {
+            newOrder: "true"
+        }
+    });
+};
 </script>
 
 <template>
@@ -77,8 +91,7 @@ const shipToDifferentAddress = ref(false);
                 </form>
             </div>
             <div class="checkout-page__order">
-                <h1 class="checkout-page__title">Your Order</h1>
-                <OrderSummary />
+                <OrderSummary order-title="Your order" :can-place-order="true" @place-order="placeOrder" />
             </div>
         </div>
     </div>
