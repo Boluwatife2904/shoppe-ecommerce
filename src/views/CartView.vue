@@ -22,7 +22,7 @@ const threeProducts = ProductStore.products.slice(0, 3);
                 <CartApplyCoupon />
             </div>
             <div class="shopping-cart__totals cart-totals">
-                <h3 class="cart-totals__title">Cart Totals</h3>
+                <h3 class="order-section__title">Cart Totals</h3>
                 <div class="cart-totals__subtotal">
                     <span class="title heading-5">SUBTOTAL</span>
                     <div class="content heading-5 dark-gray-text">$ 65,00</div>
@@ -93,19 +93,6 @@ const threeProducts = ProductStore.products.slice(0, 3);
 }
 
 .cart-totals {
-    &__title {
-        font-weight: 400;
-        font-size: 2rem;
-        line-height: 2.7rem;
-        margin-bottom: 2.3rem;
-
-        @media screen and (min-width: 768px) {
-            font-size: 2.6rem;
-            line-height: 2.5rem;
-            margin-bottom: 4.4rem;
-        }
-    }
-
     &__subtotal {
         @extend %flex-wrapper;
         margin-bottom: 2.3rem;

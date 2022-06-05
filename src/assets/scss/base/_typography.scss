@@ -71,3 +71,21 @@ body {
         @include typeface(400, 1.2rem, 2rem);
     }
 }
+
+.order-section__title {
+    font-size: 1.8rem;
+    line-height: 2.1rem;
+    margin-bottom: 2.2rem;
+    font-weight: 400;
+
+    @media screen and (min-width: 600px) {
+        font-size: 2rem;
+        line-height: 2.4rem;
+    }
+
+    @media screen and (min-width: 992px) {
+        font-size: 2.6rem;
+        line-height: 2.5rem;
+        margin-bottom: 3.9rem;
+    }
+}

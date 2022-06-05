@@ -16,55 +16,55 @@ defineEmits(["place-order"]);
 </script>
 
 <template>
-    <div class="order">
-        <h4 class="order__title">{{ orderTitle }}</h4>
-        <div class="order__wrapper">
-            <h6 class="order__heading flex space-between heading-5">
+    <div class="order-summary">
+        <h4 class="order-section__title">{{ orderTitle }}</h4>
+        <div class="order-summary__wrapper">
+            <h6 class="order-summary__heading flex space-between heading-5">
                 <span>PRODUCT</span>
                 <span>TOTAL</span>
             </h6>
-            <ul class="order__items">
-                <li class="order__item flex space-between dark-gray-text heading-5">
+            <ul class="order-summary__items">
+                <li class="order-summary__item flex space-between dark-gray-text heading-5">
                     <span>Lira Earrings</span>
                     <span>$64</span>
                 </li>
-                <li class="order__item flex space-between dark-gray-text heading-5">
+                <li class="order-summary__item flex space-between dark-gray-text heading-5">
                     <span>Ollie Earrings</span>
                     <span>$10</span>
                 </li>
-                <li class="order__item flex space-between dark-gray-text heading-5">
+                <li class="order-summary__item flex space-between dark-gray-text heading-5">
                     <span>Kaede Hair Pin</span>
                     <span>$10</span>
                 </li>
             </ul>
-            <h6 class="order__text heading-5 flex space-between">
+            <h6 class="order-summary__text heading-5 flex space-between">
                 <span>SUBTOTAL</span>
                 <span class="dark-gray-text">$85</span>
             </h6>
-            <h6 class="order__text heading-5 flex space-between">
+            <h6 class="order-summary__text heading-5 flex space-between">
                 <span>SHIPPING</span>
                 <span class="dark-gray-text">Free Shipping</span>
             </h6>
-            <h6 class="order__total body-large flex space-between">
+            <h6 class="order-summary__total body-large flex space-between">
                 <span>TOTAL</span>
                 <span>$85</span>
             </h6>
-            <div v-if="canPlaceOrder" class="order__payment flex flex-column">
-                <div class="order__payment-option">
+            <div v-if="canPlaceOrder" class="order-summary__payment flex flex-column">
+                <div class="order-summary__payment-option">
                     <BaseRadio v-model="paymentMethod" value="Direct Bank Transfer" name="payment" id="direct" label="Direct Bank Transfer" />
-                    <span v-if="paymentMethod === 'Direct Bank Transfer'" class="body-small dark-gray-text order__payment-option-info">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account</span>
+                    <span v-if="paymentMethod === 'Direct Bank Transfer'" class="body-small dark-gray-text order-summary__payment-option-info">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account</span>
                 </div>
-                <div class="order__payment-option">
+                <div class="order-summary__payment-option">
                     <BaseRadio v-model="paymentMethod" value="Check payments" name="payment" id="check" label="Check payments" />
                 </div>
-                <div class="order__payment-option">
+                <div class="order-summary__payment-option">
                     <BaseRadio v-model="paymentMethod" value="Cash on delivery" name="payment" id="cash" label="Cash on delivery" />
                 </div>
-                <div class="order__payment-option">
+                <div class="order-summary__payment-option">
                     <base-radio v-model="paymentMethod" value="Paypal" name="payment" id="paypal"> Paypal <PayPalIcon /> </base-radio>
                 </div>
             </div>
-            <div v-if="canPlaceOrder" class="order__place-order">
+            <div v-if="canPlaceOrder" class="order-summary__place-order">
                 <BaseButton size="large" variant="solid-black" text="PLACE ORDER" @click.native="$emit('place-order')" />
             </div>
         </div>
@@ -72,31 +72,13 @@ defineEmits(["place-order"]);
 </template>
 
 <style lang="scss">
-.order {
+.order-summary {
     &__wrapper {
         background-color: var(--light-gray);
         padding: 3.9rem 2.9rem 4.8rem;
 
         @media screen and (min-width: 768px) {
             padding: 3.9rem 5.9rem 4.8rem;
-        }
-    }
-
-    &__title {
-        font-size: 1.8rem;
-        line-height: 2.1rem;
-        margin-bottom: 2.2rem;
-        font-weight: 400;
-
-        @media screen and (min-width: 600px) {
-            font-size: 2rem;
-            line-height: 2.4rem;
-        }
-
-        @media screen and (min-width: 992px) {
-            font-size: 2.6rem;
-            line-height: 2.5rem;
-            margin-bottom: 3.9rem;
         }
     }
 
