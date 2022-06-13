@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
+interface Option {
+    key: string;
+    value: string;
+}
+
 interface Props {
     name: string;
-    options: string[];
+    options: Option[];
     placeholder?: string;
     modelValue: string;
     size?: string;
+    hasBorder?: boolean;
 }
 
 const props = defineProps<Props>();
@@ -15,7 +21,7 @@ defineEmits(["update:modelValue"]);
 const fontClasses = computed(() => {
     switch (props.size) {
         case "large":
-            return "input__field--large-font";
+            return "select__field--large-font";
         default:
             break;
     }
@@ -23,23 +29,10 @@ const fontClasses = computed(() => {
 </script>
 
 <template>
-    <div class="input select">
-        <select class="input__field" :class="[fontClasses]" :name="name" :id="name" :value="modelValue" @change="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)">
+    <div class="select w-100 position-relative">
+        <select class="select__field" :class="['w-100', fontClasses, { 'select__field--bordered': hasBorder }]" :name="name" :id="name" :value="modelValue" @change="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)">
             <option v-if="!!placeholder" value="">{{ placeholder }}</option>
-            <option v-for="option in options" :value="option">{{ option }}</option>
+            <option v-for="{ key, value } in options" :value="key">{{ value }}</option>
         </select>
     </div>
 </template>
-
-<style lang="scss">
-.select {
-    .input__field {
-        font-size: 1.2rem;
-        color: var(--dark-gray);
-
-        &--large-font {
-            font-size: 1.6rem;
-        }
-    }
-}
-</style>
