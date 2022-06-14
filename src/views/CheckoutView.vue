@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 import { RouterLink, useRouter } from "vue-router";
 import BaseButton from "@/components/BaseButton.vue";
 import CartApplyCoupon from "@/components/CartApplyCoupon.vue";
@@ -23,7 +23,12 @@ const emailAddress = ref("");
 const phoneNumber = ref("");
 const orderNotes = ref("");
 const country = ref("");
-const countries = ref(["Nigeria"]);
+const countries = reactive([
+    {
+        key: "nigeria",
+        value: "Nigeria",
+    },
+]);
 const createAccount = ref(false);
 const shipToDifferentAddress = ref(false);
 
@@ -34,8 +39,8 @@ const placeOrder = () => {
             slug: "1324353543",
         },
         query: {
-            newOrder: "true"
-        }
+            newOrder: "true",
+        },
     });
 };
 </script>
