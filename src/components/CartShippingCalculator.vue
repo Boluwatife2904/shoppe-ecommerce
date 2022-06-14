@@ -1,33 +1,51 @@
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { computed, reactive, ref, watch } from "vue";
 import BaseSelect from "./BaseSelect.vue";
-import statesData from "@/data/nigeria-state-and-lgas.json"
-import BaseButton from "./BaseButton.vue"
+import statesData from "@/data/nigeria-state-and-lgas.json";
+import BaseButton from "./BaseButton.vue";
 
-const countries = ref(["Nigeria"]);
+const countries = reactive([
+    {
+        key: "nigeria",
+        value: "Nigeria",
+    },
+]);
 const selectedState = ref("");
 const selectedCountry = ref("");
 const selectedLGA = ref("");
 
 const states = computed(() => {
-    return statesData.map((state) => state.state).sort()
-})
+    return statesData
+        .map((state) => {
+            return {
+                key: state.state.toLowerCase(),
+                value: state.state,
+            };
+        })
+        .sort((a, b) => (a.key > b.key ? 1 : -1));
+});
 
 const lgas = computed(() => {
     if (selectedState.value) {
-        const state = statesData.find((state) => state.state === selectedState.value);
-        return (state?.lgas) as string[];
+        const state = statesData.find((state) => state.state.toLowerCase() === selectedState.value);
+        return [...state?.lgas].map((lga) => {
+            return {
+                key: lga.toLowerCase(),
+                value: lga,
+            };
+        });
     } else {
-        return []
+        return [];
     }
-})
+});
 
 // Change Selected LGA to "" when the selectedState is changed
-watch(selectedState, () => selectedLGA.value = "");
+watch(selectedState, () => (selectedLGA.value = ""));
 </script>
 
 <template>
     <div class="shipping">
+        {{ lgas }}
         <h5 class="heading-5 shipping__title">CALCULATE SHIPPING</h5>
         <div class="shipping__input">
             <BaseSelect v-model="selectedCountry" :options="countries" name="country" placeholder="SELECT A COUNTRY" />
@@ -46,7 +64,6 @@ watch(selectedState, () => selectedLGA.value = "");
 
 <style lang="scss">
 .shipping {
-
     &__title {
         margin-bottom: 2.3rem;
     }

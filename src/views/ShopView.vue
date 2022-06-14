@@ -19,7 +19,7 @@ interface Product {
 
 const searchValue = ref("");
 const shopByOption = ref("");
-const sortByOption = ref<"name" | "category">("name");
+const sortByOption = ref("");
 
 const filterProductsByName = (products: Product[]): Product[] => {
     if (searchValue.value) {
@@ -37,7 +37,12 @@ const filterProductsByCategory = (products: Product[]): Product[] => {
 
 const sortProductsByValue = (products: Product[]): Product[] => {
     if (sortByOption.value) {
-        return [...products].sort((productOne, productTwo) => (productOne[sortByOption.value] > productTwo[sortByOption.value] ? 1 : -1));
+        switch (sortByOption.value) {
+            case "category":
+                return [...products].sort((productOne, productTwo) => (productOne.category > productTwo.category ? 1 : -1));
+            case "name":
+                return [...products].sort((productOne, productTwo) => (productOne.name > productTwo.name ? 1 : -1));
+        }
     }
     return products;
 };
