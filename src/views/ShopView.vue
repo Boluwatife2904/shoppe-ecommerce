@@ -3,9 +3,15 @@ import ProductCardList from "@/components/ProductCardList.vue";
 import ProductCardItem from "@/components/ProductCardItem.vue";
 import { useProductStore } from "@/stores/ProductStore";
 import BaseInput from "../components/BaseInput.vue";
-import { computed, ref } from "vue";
+import { computed, onMounted, onUnmounted, ref } from "vue";
 import SearchIcon from "../components/icons/IconSearch.vue";
 import BaseSelect from "../components/BaseSelect.vue";
+import BaseCheckbox from "../components/BaseCheckbox.vue";
+import Slider from "@vueform/slider";
+import EmptyState from "../components/EmptyState.vue";
+import FilterIcon from "../components/icons/IconFilter.vue";
+import CloseIcon from "../components/icons/IconClose.vue";
+import BaseButton from "../components/BaseButton.vue";
 
 const ProductStore = useProductStore();
 
@@ -14,12 +20,18 @@ interface Product {
     name: string;
     price: number;
     category: string;
+    stock: number;
+    discountValue: number;
     variant: string;
 }
 
 const searchValue = ref("");
 const shopByOption = ref("");
 const sortByOption = ref("");
+const onSale = ref(false);
+const inStock = ref(false);
+const priceRange = ref([0, 100]);
+const showFilterContainer = ref(false);
 
 const filterProductsByName = (products: Product[]): Product[] => {
     if (searchValue.value) {
@@ -35,6 +47,10 @@ const filterProductsByCategory = (products: Product[]): Product[] => {
     return products;
 };
 
+const filterProductsByPrice = (products: Product[]): Product[] => {
+    return [...products].filter((product) => product.price >= priceRange.value[0] && product.price <= priceRange.value[1]);
+};
+
 const sortProductsByValue = (products: Product[]): Product[] => {
     if (sortByOption.value) {
         switch (sortByOption.value) {
@@ -47,8 +63,22 @@ const sortProductsByValue = (products: Product[]): Product[] => {
     return products;
 };
 
+const productsThatAreInStock = (products: Product[]): Product[] => {
+    if (inStock.value) {
+        return [...products].filter((product) => product.stock > 0);
+    }
+    return products;
+};
+
+const productsThatAreOnSale = (products: Product[]): Product[] => {
+    if (onSale.value) {
+        return [...products].filter((product) => product.discountValue > 0);
+    }
+    return products;
+};
+
 const filteredProducts = computed(() => {
-    return filterProductsByName(filterProductsByCategory(sortProductsByValue(ProductStore.allProducts)));
+    return filterProductsByPrice(filterProductsByName(filterProductsByCategory(sortProductsByValue(productsThatAreInStock(productsThatAreOnSale(ProductStore.allProducts))))));
 });
 
 const shopByOptions = [
@@ -76,14 +106,44 @@ const sortByOptions = [
         value: "Price",
     },
 ];
+
+const toggleFilterContainer = () => {
+    showFilterContainer.value = !showFilterContainer.value;
+};
+
+const checkScreenWidth = () => {
+    if (window.innerWidth >= 992) {
+        showFilterContainer.value = false;
+    }
+};
+
+onMounted(() => {
+    window.addEventListener("resize", checkScreenWidth);
+});
+
+onUnmounted(() => {
+    window.removeEventListener("resize", checkScreenWidth);
+});
 </script>
 
 <template>
     <div class="shop-page page-layout-margin">
-        <h1 class="heading-1 shop-page__title">Shop The Latest</h1>
+        <div class="shop-page__heading flex items-start space-between">
+            <h1 class="heading-1 shop-page__title">Shop The Latest</h1>
+            <button class="shop-page__filter-button button" @click="toggleFilterContainer">
+                <FilterIcon />
+            </button>
+        </div>
 
         <div class="shop-page__wrapper">
-            <div class="shop-page__filter">
+            <!-- FILTER -->
+            <div class="shop-page__filter flex flex-column text-center" :class="{ 'shop-page__filter--mobile': showFilterContainer }">
+                <p class="heading-1 flex space-between title">
+                    Filter Products
+                    <button class="button" @click="toggleFilterContainer">
+                        <CloseIcon />
+                    </button>
+                </p>
                 <div class="shop-page__search position-relative">
                     <BaseInput v-model="searchValue" id="search" type="search" placeholder="Search..." />
                     <div class="shop-page__search-icon position-absolute">
@@ -96,16 +156,35 @@ const sortByOptions = [
                 <div class="shop-page__sort-by">
                     <BaseSelect name="shop-by" v-model="sortByOption" :options="sortByOptions" placeholder="Sort By" :has-border="true" size="large" />
                 </div>
+                <div class="shop-page__slider">
+                    <Slider v-model="priceRange" :min="0" :max="100" :lazy="false" :tooltips="false" />
+                    <p class="body-medium dark-gray-text shop-page__prices">Price: ${{ priceRange[0] }} - ${{ priceRange[1] }}</p>
+                </div>
+                <div class="shop-page__on-sale flex items-center space-between">
+                    <span class="heading-5">On Sale</span>
+                    <BaseCheckbox v-model="onSale" type="switch" id="on-sale" />
+                </div>
+                <div class="shop-page__in-stock flex items-center space-between">
+                    <span class="heading-5">In Stock</span>
+                    <BaseCheckbox v-model="inStock" type="switch" id="in-stock" />
+                </div>
+
+                <div class="shop-page__apply-filter">
+                    <BaseButton size="large" variant="solid-accent" text="Apply Filters" @click.native="toggleFilterContainer" />
+                </div>
             </div>
+            <!-- PRODUCTS -->
             <div class="shop-page__products">
-                <product-card-list>
+                <product-card-list v-if="filteredProducts && filteredProducts.length > 0">
                     <product-card-item v-for="product in filteredProducts" :product="product"></product-card-item>
                 </product-card-list>
+                <EmptyState v-else heading="No product found!" message="We could not find any product matching the selected filters. Kindly try out other filters to check out some of our other amazing products." />
             </div>
         </div>
     </div>
 </template>
 
+<style src="@vueform/slider/themes/default.css"></style>
 <style lang="scss">
 .shop-page {
     &__title {
@@ -121,6 +200,44 @@ const sortByOptions = [
         }
     }
 
+    &__filter {
+        background-color: #fff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        z-index: 1;
+        padding: 5rem 3rem;
+        left: -100%;
+        transition: all 0.3s linear;
+
+        @media screen and (min-width: 992px) {
+            position: sticky;
+            padding: 0;
+            height: 60rem;
+            padding-top: 1rem;
+        }
+
+        &--mobile {
+            left: 0;
+        }
+
+        .title {
+            margin-bottom: 3.9rem;
+
+            @media screen and (min-width: 992px) {
+                display: none;
+            }
+        }
+    }
+
+    &__filter-button {
+        @media screen and (min-width: 992px) {
+            display: none;
+        }
+    }
+
     &__search {
         margin-bottom: 3.9rem;
 
@@ -132,6 +249,30 @@ const sortByOptions = [
 
     &__shop-by {
         margin-bottom: 1.6rem;
+    }
+
+    &__sort-by {
+        margin-bottom: 3.9rem;
+    }
+
+    &__slider {
+        margin-bottom: 3.9rem;
+    }
+
+    &__on-sale {
+        margin-bottom: 4.2rem;
+    }
+
+    &__prices {
+        margin-top: 2rem;
+    }
+
+    &__apply-filter {
+        margin-top: auto;
+
+        @media screen and (min-width: 992px) {
+            display: none;
+        }
     }
 }
 </style>

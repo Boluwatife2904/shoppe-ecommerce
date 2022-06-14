@@ -45,7 +45,6 @@ watch(selectedState, () => (selectedLGA.value = ""));
 
 <template>
     <div class="shipping">
-        {{ lgas }}
         <h5 class="heading-5 shipping__title">CALCULATE SHIPPING</h5>
         <div class="shipping__input">
             <BaseSelect v-model="selectedCountry" :options="countries" name="country" placeholder="SELECT A COUNTRY" />

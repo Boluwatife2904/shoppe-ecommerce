@@ -9,6 +9,8 @@ export const useProductStore = defineStore("ProductStore", {
                     name: "Lira Earrings",
                     price: 20,
                     category: "earring",
+                    stock: 34,
+                    discountValue: 21,
                     variant: "Black/Medium",
                 },
                 {
@@ -16,6 +18,8 @@ export const useProductStore = defineStore("ProductStore", {
                     name: "Hal Earrings",
                     price: 25,
                     category: "earring",
+                    stock: 4,
+                    discountValue: 0,
                     variant: "Black/Medium",
                 },
                 {
@@ -23,6 +27,8 @@ export const useProductStore = defineStore("ProductStore", {
                     name: "Kaede Hair Pin Set Of 3 ",
                     price: 25,
                     category: "pin",
+                    stock: 5,
+                    discountValue: 0,
                     variant: "Black/Medium",
                 },
                 {
@@ -30,6 +36,8 @@ export const useProductStore = defineStore("ProductStore", {
                     name: "Hair Pin Set of 3",
                     price: 25,
                     category: "pin",
+                    stock: 8,
+                    discountValue: 0,
                     variant: "Black/Medium",
                 },
                 {
@@ -37,6 +45,8 @@ export const useProductStore = defineStore("ProductStore", {
                     name: "Plaine Necklace",
                     price: 25,
                     category: "necklace",
+                    stock: 0,
+                    discountValue: 0,
                     variant: "Black/Medium",
                 },
                 {
@@ -44,6 +54,8 @@ export const useProductStore = defineStore("ProductStore", {
                     name: "Yuki Hair Pin Set of 3",
                     price: 25,
                     category: "pin",
+                    stock: 13,
+                    discountValue: 0,
                     variant: "Black/Medium",
                 },
             ],

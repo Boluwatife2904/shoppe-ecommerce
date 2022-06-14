@@ -17,6 +17,8 @@ const variantClasses = computed(() => {
     switch (props.variant) {
         case "solid-black":
             return "button--solid-black";
+        case "solid-accent":
+            return "button--solid-accent";
         case "outline-black":
             return "button--outline-black";
         default:

@@ -1,26 +1,35 @@
 <script setup lang="ts">
 import BaseButton from "./BaseButton.vue";
+import BaseBadge from "./BaseBadge.vue";
 import CartIcon from "./icons/IconCart.vue";
 import EyeIcon from "./icons/IconEye.vue";
-import HeartIcon from "./icons/IconHeart.vue"
+import HeartIcon from "./icons/IconHeart.vue";
 
 interface Product {
-    image: string,
-    price: number
-    name: string
+    image: string;
+    name: string;
+    price: number;
+    category: string;
+    stock: number;
+    discountValue: number;
+    variant: string;
 }
 
 interface Props {
-    product: Product
+    product: Product;
 }
 
-defineProps<Props>()
+defineProps<Props>();
 </script>
 
 <template>
     <div class="product">
         <div class="product__image position-relative">
-            <img :src="product.image" :alt="product.name">
+            <img :src="product.image" :alt="product.name" />
+            <div class="product__badges position-absolute">
+                <base-badge v-if="product.discountValue > 0"> -{{ product.discountValue }}% </base-badge>
+                <base-badge v-if="product.stock === 0">Sold out</base-badge>
+            </div>
             <div class="product__image--overlay position-absolute flex items-center content-center">
                 <ul class="product__icons flex items-center flex-center">
                     <li class="product__icon">
@@ -53,7 +62,7 @@ defineProps<Props>()
     width: 100%;
 
     &__image {
-        margin-bottom: .6rem;
+        margin-bottom: 0.6rem;
         position: relative;
 
         @media screen and (min-width: 600px) {
@@ -69,14 +78,14 @@ defineProps<Props>()
 
         &--overlay {
             background: rgba(255, 255, 255, 0.6);
-            border-radius: .4rem .4rem 0 0;
+            border-radius: 0.4rem 0.4rem 0 0;
             height: 100%;
             width: 100%;
             top: 0;
             left: 0;
             opacity: 0;
             transform: translateY(2rem);
-            transition: all .2s;
+            transition: all 0.2s;
         }
     }
 
@@ -92,11 +101,16 @@ defineProps<Props>()
     }
 
     &__name {
-        margin-bottom: .4rem;
+        margin-bottom: 0.4rem;
 
         @media screen and (min-width: 600px) {
             margin-bottom: 1.6rem;
         }
+    }
+
+    &__badges {
+        top: 1rem;
+        left: 1rem;
     }
 }
 </style>

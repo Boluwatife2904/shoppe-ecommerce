@@ -41,6 +41,14 @@
         color: var(--white-color);
     }
 
+    &--solid-accent {
+        @include typeface(400, 1.6rem, 2.1rem);
+        border: .1rem solid transparent;
+        background: var(--accent-color);
+        border-radius: .4rem;
+        color: var(--white-color);
+    }
+
     &--bold {
         font-weight: 700;
     }
