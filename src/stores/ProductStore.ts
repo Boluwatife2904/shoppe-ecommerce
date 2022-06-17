@@ -12,6 +12,7 @@ export const useProductStore = defineStore("ProductStore", {
                     stock: 34,
                     discountValue: 21,
                     variant: "Black/Medium",
+                    slug: "lira-earrings",
                 },
                 {
                     image: "/images/product-two.png",
@@ -21,6 +22,7 @@ export const useProductStore = defineStore("ProductStore", {
                     stock: 4,
                     discountValue: 0,
                     variant: "Black/Medium",
+                    slug: "hal-earrings",
                 },
                 {
                     image: "/images/product-three.png",
@@ -30,6 +32,7 @@ export const useProductStore = defineStore("ProductStore", {
                     stock: 5,
                     discountValue: 0,
                     variant: "Black/Medium",
+                    slug: "kaede-hair-pin-set-of-3",
                 },
                 {
                     image: "/images/product-four.png",
@@ -39,6 +42,7 @@ export const useProductStore = defineStore("ProductStore", {
                     stock: 8,
                     discountValue: 0,
                     variant: "Black/Medium",
+                    slug: "hair-pin-set-of-3",
                 },
                 {
                     image: "/images/product-five.png",
@@ -48,6 +52,7 @@ export const useProductStore = defineStore("ProductStore", {
                     stock: 0,
                     discountValue: 0,
                     variant: "Black/Medium",
+                    slug: "plaine-necklace",
                 },
                 {
                     image: "/images/product-three.png",
@@ -57,6 +62,7 @@ export const useProductStore = defineStore("ProductStore", {
                     stock: 13,
                     discountValue: 0,
                     variant: "Black/Medium",
+                    slug: "yuki-hair-pin-set-of-3",
                 },
             ],
         };

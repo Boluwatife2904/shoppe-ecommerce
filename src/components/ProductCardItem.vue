@@ -4,6 +4,7 @@ import BaseBadge from "./BaseBadge.vue";
 import CartIcon from "./icons/IconCart.vue";
 import EyeIcon from "./icons/IconEye.vue";
 import HeartIcon from "./icons/IconHeart.vue";
+import { useRouter } from "vue-router";
 
 interface Product {
     image: string;
@@ -13,6 +14,7 @@ interface Product {
     stock: number;
     discountValue: number;
     variant: string;
+    slug: string;
 }
 
 interface Props {
@@ -20,6 +22,12 @@ interface Props {
 }
 
 defineProps<Props>();
+
+const router = useRouter();
+
+const viewProduct = (slug: string) => {
+    router.push({ name: "product-slug", params: { slug } });
+};
 </script>
 
 <template>
@@ -38,7 +46,7 @@ defineProps<Props>();
                         </base-button>
                     </li>
                     <li class="product__icon">
-                        <base-button>
+                        <base-button @click="viewProduct(product.slug)">
                             <EyeIcon />
                         </base-button>
                     </li>

@@ -3,11 +3,16 @@ import { createRouter, createWebHistory } from "vue-router";
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
-        // OTHER GENERIC PAGE (HOME, ABOUT, CONTACT, TERMS OF SERVICE........)
+        // OTHER GENERIC PAGE (HOME, PRODUCT, ABOUT, CONTACT, TERMS OF SERVICE........)
         {
             path: "/",
             name: "index",
             component: () => import("../views/HomeView.vue"),
+        },
+        {
+            path: "/product/:slug",
+            name: "product-slug",
+            component: () => import("../views/ProductView.vue"),
         },
         {
             path: "/about",

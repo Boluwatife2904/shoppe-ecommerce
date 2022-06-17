@@ -10,7 +10,7 @@ defineProps<Props>();
 <template>
     <div class="empty-state text-center">
         <div class="empty-state__icon">
-            <img src="@/assets/images/crying-face.png" alt="Crying Face Emoji">
+            <img src="../assets/images/crying-face.png" alt="Crying Face Emoji">
         </div>
         <h5 class="empty-state__heading heading-2">{{ heading }}</h5>
         <p class="empty-state__message heading-5">{{ message }}</p>
