@@ -21,6 +21,8 @@ const variantClasses = computed(() => {
             return "button--solid-accent";
         case "outline-black":
             return "button--outline-black";
+        case "outline-white":
+            return "button--outline-white";
         default:
             return "";
     }

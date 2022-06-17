@@ -9,6 +9,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@splidejs/vue-splide": "^0.6.7",
     "@vueform/slider": "^2.0.10",
     "pinia": "^2.0.13",
     "vue": "^3.2.33",

@@ -158,7 +158,7 @@ onUnmounted(() => {
                 </div>
                 <div class="shop-page__slider">
                     <Slider v-model="priceRange" :min="0" :max="100" :lazy="false" :tooltips="false" />
-                    <p class="body-medium dark-gray-text shop-page__prices">Price: ${{ priceRange[0] }} - ${{ priceRange[1] }}</p>
+                    <p class="body-medium dark-gray-text shop-page__prices text-left">Price: ${{ priceRange[0] }} - ${{ priceRange[1] }}</p>
                 </div>
                 <div class="shop-page__on-sale flex items-center space-between">
                     <span class="heading-5">On Sale</span>
