@@ -12,7 +12,7 @@ const ProductStore = useProductStore();
 const similarProducts = ProductStore.allProducts.slice(0, 3);
 
 type TabChoices = "description" | "additional-information" | "reviews";
-const selectedTab = ref<TabChoices>("reviews");
+const selectedTab = ref<TabChoices>("description");
 
 const changeActiveTab = (tab: TabChoices) => {
     selectedTab.value = tab;
@@ -67,7 +67,7 @@ const changeActiveTab = (tab: TabChoices) => {
 
     &__reviews {
         gap: 3.9rem 0;
-        
+
         @media screen and (min-width: 768px) {
             grid-template-columns: repeat(2, 1fr);
         }
