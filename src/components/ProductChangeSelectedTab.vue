@@ -40,6 +40,11 @@ const changeTab = (tab: TabChoices) => {
     overflow-x: scroll;
     overflow-y: hidden;
     scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     &::after {
         content: "";
