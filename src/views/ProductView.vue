@@ -5,6 +5,7 @@ import { useProductStore } from "@/stores/ProductStore";
 import ProductChangeSelectedTab from "@/components/ProductChangeSelectedTab.vue";
 import { ref } from "vue";
 import ProductReviewForm from "@/components/ProductReviewForm.vue";
+import ProductReviewList from "@/components/ProductReviewList.vue";
 
 const ProductStore = useProductStore();
 
@@ -38,7 +39,7 @@ const changeActiveTab = (tab: TabChoices) => {
 
         <!-- PRODUCT REVIEWS SECTION -->
         <div v-if="selectedTab === 'reviews'" class="single-product__reviews grid">
-            <div></div>
+            <ProductReviewList />
             <ProductReviewForm />
         </div>
 
@@ -65,6 +66,8 @@ const changeActiveTab = (tab: TabChoices) => {
     }
 
     &__reviews {
+        gap: 3.9rem 0;
+        
         @media screen and (min-width: 768px) {
             grid-template-columns: repeat(2, 1fr);
         }
