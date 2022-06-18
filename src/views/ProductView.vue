@@ -4,13 +4,14 @@ import ProductCardItem from "@/components/ProductCardItem.vue";
 import { useProductStore } from "@/stores/ProductStore";
 import ProductChangeSelectedTab from "@/components/ProductChangeSelectedTab.vue";
 import { ref } from "vue";
+import ProductReviewForm from "@/components/ProductReviewForm.vue";
 
 const ProductStore = useProductStore();
 
 const similarProducts = ProductStore.allProducts.slice(0, 3);
 
 type TabChoices = "description" | "additional-information" | "reviews";
-const selectedTab = ref<TabChoices>("description");
+const selectedTab = ref<TabChoices>("reviews");
 
 const changeActiveTab = (tab: TabChoices) => {
     selectedTab.value = tab;
@@ -27,6 +28,20 @@ const changeActiveTab = (tab: TabChoices) => {
             <p class="heading-5 dark-gray-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.</p>
         </div>
 
+        <!-- PRODUCT ADDTIONAL INFORMATION SECTION -->
+        <div v-if="selectedTab === 'additional-information'" class="single-product__additional-information">
+            <p class="heading-5 flex"><span class="font-bold">Weight:</span> <span class="dark-gray-text">0.3kg</span></p>
+            <p class="heading-5 flex"><span class="font-bold">Dimensions:</span> <span class="dark-gray-text">15 x 10 x 1 cm</span></p>
+            <p class="heading-5 flex"><span class="font-bold">Colours:</span> <span class="dark-gray-text">Black, Brown, White</span></p>
+            <p class="heading-5 flex"><span class="font-bold">Materials:</span> <span class="dark-gray-text">Metal</span></p>
+        </div>
+
+        <!-- PRODUCT REVIEWS SECTION -->
+        <div v-if="selectedTab === 'reviews'" class="single-product__reviews grid">
+            <div></div>
+            <ProductReviewForm />
+        </div>
+
         <!-- SIMILAR ITEMS -->
         <section class="similar-items">
             <h3 class="similar-items__heading heading-2">Similar Items</h3>
@@ -38,6 +53,24 @@ const changeActiveTab = (tab: TabChoices) => {
 </template>
 
 <style lang="scss">
+.single-product {
+    &__additional-information {
+        p {
+            &:not(:last-child) {
+                margin-bottom: 1.2rem;
+            }
+
+            gap: 2rem;
+        }
+    }
+
+    &__reviews {
+        @media screen and (min-width: 768px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
 .similar-items {
     margin-top: 9.6rem;
 

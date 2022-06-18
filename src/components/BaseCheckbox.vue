@@ -4,6 +4,8 @@ interface Props {
     id: string;
     modelValue: boolean;
     type?: string;
+    labelSize?: string;
+    labelColor?: string;
 }
 
 defineProps<Props>();
@@ -19,7 +21,7 @@ defineEmits(["update:modelValue"]);
     <!-- NORMAL CHECKBOXES -->
     <label v-else class="checkbox__label flex items-center" :for="id">
         <input class="checkbox__input" type="checkbox" :name="id" :id="id" @change="$emit('update:modelValue', ($event.target as HTMLInputElement).checked)" :checked="modelValue" />
-        <span v-if="!!label" class="heading-5">{{ label }}</span>
+        <span v-if="!!label" :class="[labelSize === 'small' ? 'small-label' : 'heading-5', { 'dark-gray-text': labelColor === 'gray' }]">{{ label }}</span>
     </label>
 </template>
 
@@ -36,6 +38,11 @@ defineEmits(["update:modelValue"]);
     &__label {
         cursor: pointer;
     }
+}
+
+.small-label {
+    font-size: 12px;
+    line-height: 16px;
 }
 
 /* switch checkbox style */
