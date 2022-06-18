@@ -23,6 +23,7 @@ interface Product {
     stock: number;
     discountValue: number;
     variant: string;
+    slug: string
 }
 
 const searchValue = ref("");
