@@ -1,0 +1,135 @@
+<script setup lang="ts">
+import BaseButton from "./BaseButton.vue";
+import HeartIcon from "./icons/IconHeart.vue";
+import MailIcon from "./icons/IconMail.vue";
+import TwitterIcon from "./icons/IconTwitter.vue";
+import InstagramIcon from "./icons/IconInstagram.vue";
+import FacebookIcon from "./icons/IconFacebook.vue";
+import vue3starRatings from "vue3-star-ratings";
+import { ref } from "vue";
+
+const star = ref(5);
+</script>
+
+<template>
+    <div class="single-product">
+        <h3 class="single-product__name heading-2">Lira Earrings</h3>
+        <p class="single-product__price heading-4 accent-text">$ 20,00</p>
+
+        <div class="single-product__review flex items-center">
+            <div class="single-product__rating">
+                <vue3star-ratings v-model="star" :disable-click="true" :numberOfStars="5" :step="1" star-size="18" inactive-color="#fff" :show-control="false" star-color="#000" />
+            </div>
+            <p class="single-product__count dark-gray-text heading-5">1 customer review</p>
+        </div>
+
+        <p class="single-product__description heading-5 dark-gray-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis.</p>
+
+        <div class="single-product__quantity flex items-center space-between">
+            <div class="single-product__counter flex items-center space-between">
+                <button class="button heading-5">-</button>
+                <span class="heading-5">1</span>
+                <button class="button heading-5">+</button>
+            </div>
+            <BaseButton variant="outline-black" size="large" text="ADD TO CART" />
+        </div>
+
+        <div class="single-product__icons flex items-center">
+            <button class="button single-product__wishlist navigation__link navigation__link--light">
+                <HeartIcon />
+            </button>
+            <ul class="single-product__socials flex items-center">
+                <li>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="navigation__link navigation__link--light">
+                        <MailIcon />
+                    </a>
+                </li>
+                <li>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="navigation__link navigation__link--light">
+                        <FacebookIcon />
+                    </a>
+                </li>
+                <li>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="navigation__link navigation__link--light">
+                        <InstagramIcon />
+                    </a>
+                </li>
+                <li>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="navigation__link navigation__link--light">
+                        <TwitterIcon />
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <p class="single-product__sku heading-5">
+            <span>SKU:</span>
+            <span class="dark-gray-text">12</span>
+        </p>
+
+        <p class="single-product__categories heading-5">
+            <span>Categories:</span>
+            <span class="dark-gray-text">Fashion, Style</span>
+        </p>
+    </div>
+</template>
+
+<style lang="scss">
+.single-product {
+    &__name {
+        margin-bottom: 2.3rem;
+    }
+
+    &__price {
+        margin-bottom: 6.4rem;
+    }
+
+    &__review {
+        margin-bottom: 1.9rem;
+        gap: 2.4rem;
+    }
+
+    &__description {
+        margin-bottom: 4.8rem;
+    }
+
+    &__quantity {
+        margin-bottom: 8.1rem;
+        gap: 2.3rem;
+    }
+
+    &__counter {
+        background: var(--light-gray);
+        border-radius: 4px;
+        min-width: 12rem;
+        padding: 1.4rem 1.2rem 1.2rem 1.6rem;
+
+        span,
+        button {
+            color: var(--dark-gray);
+        }
+    }
+
+    &__icons {
+        margin-bottom: 3.8rem;
+        gap: 3.9rem;
+    }
+
+    &__socials {
+        gap: 2.5rem;
+        padding-left: 3.9rem;
+        border-left: 1px solid var(--gray);
+    }
+
+    &__sku {
+        margin-bottom: 0.6rem;
+    }
+
+    &__sku,
+    &__categories {
+        span:first-child {
+            margin-right: 1.6rem;
+        }
+    }
+}
+</style>

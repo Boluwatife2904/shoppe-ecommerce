@@ -6,6 +6,7 @@ import ProductChangeSelectedTab from "@/components/ProductChangeSelectedTab.vue"
 import { ref } from "vue";
 import ProductReviewForm from "@/components/ProductReviewForm.vue";
 import ProductReviewList from "@/components/ProductReviewList.vue";
+import ProductInformation from "@/components/ProductInformation.vue";
 
 const ProductStore = useProductStore();
 
@@ -20,7 +21,13 @@ const changeActiveTab = (tab: TabChoices) => {
 </script>
 
 <template>
-    <div class="div single-product">
+    <div class="single-product">
+        <!-- PRODUCT IMAGE GALLERY AND INFORMATION -->
+        <div class="single-product__heading">
+            <div></div>
+            <ProductInformation />
+        </div>
+
         <!-- PRODUCT TAB CHANGER -->
         <ProductChangeSelectedTab :selected-tab="selectedTab" @change-tab="changeActiveTab" />
 
@@ -55,6 +62,15 @@ const changeActiveTab = (tab: TabChoices) => {
 
 <style lang="scss">
 .single-product {
+    &__heading {
+        display: grid;
+        margin-top: 6rem;
+
+        @media screen and (min-width: 992px) {
+            grid-template-columns: 60% 40%;
+        }
+    }
+
     &__additional-information {
         p {
             &:not(:last-child) {
