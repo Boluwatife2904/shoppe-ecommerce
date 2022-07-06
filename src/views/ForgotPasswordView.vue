@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import BaseInput from '@/components/BaseInput.vue';
-import BaseButton from '@/components/BaseButton.vue';
 import { ref } from 'vue';
 
 const emailAddress = ref("");

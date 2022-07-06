@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { computed, reactive, ref, watch } from "vue";
-import BaseSelect from "./BaseSelect.vue";
 import statesData from "@/data/nigeria-state-and-lgas.json";
-import BaseButton from "./BaseButton.vue";
 
 const countries = reactive([
     {
@@ -28,7 +26,7 @@ const states = computed(() => {
 const lgas = computed(() => {
     if (selectedState.value) {
         const state = statesData.find((state) => state.state.toLowerCase() === selectedState.value);
-        return [...state?.lgas].map((lga) => {
+        return [...(<string[]>state?.lgas)].map((lga) => {
             return {
                 key: lga.toLowerCase(),
                 value: lga,

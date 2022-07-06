@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import ShoppeLogo from "@/components/icons/ShoppeLogo.vue";
-import BaseButton from "@/components/BaseButton.vue";
 import CartIcon from "@/components/icons/IconCart.vue";
 import UserIcon from "@/components/icons/IconUser.vue";
 import SearchIcon from "@/components/icons/IconSearch.vue";

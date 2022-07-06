@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
-import BaseAlert from "../components/BaseAlert.vue";
 import OrderSummary from "../components/OrderSummary.vue";
 import OrderDetails from "../components/OrderDetails.vue";
 

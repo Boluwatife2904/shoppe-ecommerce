@@ -2,16 +2,12 @@
 import ProductCardList from "@/components/ProductCardList.vue";
 import ProductCardItem from "@/components/ProductCardItem.vue";
 import { useProductStore } from "@/stores/ProductStore";
-import BaseInput from "../components/BaseInput.vue";
 import { computed, onMounted, onUnmounted, ref } from "vue";
 import SearchIcon from "../components/icons/IconSearch.vue";
-import BaseSelect from "../components/BaseSelect.vue";
-import BaseCheckbox from "../components/BaseCheckbox.vue";
 import Slider from "@vueform/slider";
 import EmptyState from "../components/EmptyState.vue";
 import FilterIcon from "../components/icons/IconFilter.vue";
 import CloseIcon from "../components/icons/IconClose.vue";
-import BaseButton from "../components/BaseButton.vue";
 
 const ProductStore = useProductStore();
 

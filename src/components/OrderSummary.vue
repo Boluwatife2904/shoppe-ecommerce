@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import BaseRadio from "./BaseRadio.vue";
-import BaseButton from "./BaseButton.vue";
 import PayPalIcon from "./icons/IconPayPal.vue";
 
 interface Props {

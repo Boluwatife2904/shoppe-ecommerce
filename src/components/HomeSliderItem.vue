@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import BaseButton from "./BaseButton.vue";
-</script>
+<script setup lang="ts"></script>
 
 <template>
     <section class="home-slider flex items-center">

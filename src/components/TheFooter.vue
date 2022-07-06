@@ -5,8 +5,6 @@ import InstagramIcon from "@/components/icons/IconInstagram.vue";
 import TwitterIcon from "@/components/icons/IconTwitter.vue";
 import LinkedinIcon from "@/components/icons/IconLinkedin.vue";
 import RightArrowIcon from '@/components/icons/IconArrowRight.vue';
-import BaseInput from '@/components/BaseInput.vue';
-import BaseButton from '@/components/BaseButton.vue';
 
 import { ref, computed } from 'vue';
 

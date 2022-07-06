@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import BaseButton from "./BaseButton.vue";
 import HeartIcon from "./icons/IconHeart.vue";
 import MailIcon from "./icons/IconMail.vue";
 import TwitterIcon from "./icons/IconTwitter.vue";

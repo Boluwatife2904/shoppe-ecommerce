@@ -1,11 +1,7 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
 import { RouterLink, useRouter } from "vue-router";
-import BaseButton from "@/components/BaseButton.vue";
 import CartApplyCoupon from "@/components/CartApplyCoupon.vue";
-import BaseInput from "@/components/BaseInput.vue";
-import BaseSelect from "@/components/BaseSelect.vue";
-import BaseCheckbox from "@/components/BaseCheckbox.vue";
 import OrderSummary from "@/components/OrderSummary.vue";
 
 const router = useRouter();

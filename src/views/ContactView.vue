@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import BaseInput from '@/components/BaseInput.vue';
-import BaseTextarea from "@/components/BaseTextarea.vue";
-import BaseButton from '@/components/BaseButton.vue';
 import { ref } from 'vue';
 
 const firstName = ref("");

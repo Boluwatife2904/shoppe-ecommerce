@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import BaseButton from './BaseButton.vue';
-import BaseInput from './BaseInput.vue';
+import { ref } from "vue";
 
 const couponCode = ref("");
 </script>

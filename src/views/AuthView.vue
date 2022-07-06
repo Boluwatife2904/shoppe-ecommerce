@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
-import BaseInput from "@/components/BaseInput.vue";
-import BaseButton from "@/components/BaseButton.vue";
-import BaseCheckbox from "@/components/BaseCheckbox.vue";
 
 type AuthSection = "sign-in" | "register";
 

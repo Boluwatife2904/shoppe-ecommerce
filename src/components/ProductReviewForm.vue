@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import BaseInput from "./BaseInput.vue";
-import BaseCheckbox from "./BaseCheckbox.vue";
-import BaseButton from "./BaseButton.vue";
-import BaseTextarea from "./BaseTextarea.vue";
 import vue3starRatings from "vue3-star-ratings";
 
 const review = ref("");

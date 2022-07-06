@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import BaseButton from "./BaseButton.vue";
-import BaseBadge from "./BaseBadge.vue";
 import CartIcon from "./icons/IconCart.vue";
 import EyeIcon from "./icons/IconEye.vue";
 import HeartIcon from "./icons/IconHeart.vue";
