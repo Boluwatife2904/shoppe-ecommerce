@@ -24,7 +24,7 @@ const star = ref(5);
 
         <p class="single-product__description heading-5 dark-gray-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis.</p>
 
-        <div class="single-product__quantity flex items-center space-between">
+        <div class="single-product__quantity flex items-center">
             <div class="single-product__counter flex items-center space-between">
                 <button class="button heading-5">-</button>
                 <span class="heading-5">1</span>
@@ -75,26 +75,52 @@ const star = ref(5);
 
 <style lang="scss">
 .single-product {
+    margin-top: 3rem;
+
+    @media screen and (min-width: 768px) {
+        margin-top: 0;
+    }
+
     &__name {
-        margin-bottom: 2.3rem;
+        margin-bottom: 1rem;
+
+        @media screen and (min-width: 600px) {
+            margin-bottom: 2.3rem;
+        }
     }
 
     &__price {
-        margin-bottom: 6.4rem;
+        margin-bottom: 2.2rem;
+
+        @media screen and (min-width: 600px) {
+            margin-bottom: 6.4rem;
+        }
     }
 
     &__review {
-        margin-bottom: 1.9rem;
+        margin-bottom: 1rem;
         gap: 2.4rem;
+
+        @media screen and (min-width: 600px) {
+            margin-bottom: 1.9rem;
+        }
     }
 
     &__description {
-        margin-bottom: 4.8rem;
+        margin-bottom: 2.4rem;
+
+        @media screen and (min-width: 600px) {
+            margin-bottom: 4.8rem;
+        }
     }
 
     &__quantity {
-        margin-bottom: 8.1rem;
+        margin-bottom: 4.2rem;
         gap: 2.3rem;
+
+        @media screen and (min-width: 600px) {
+            margin-bottom: 8.1rem;
+        }
     }
 
     &__counter {
@@ -110,8 +136,12 @@ const star = ref(5);
     }
 
     &__icons {
-        margin-bottom: 3.8rem;
+        margin-bottom: 1.8rem;
         gap: 3.9rem;
+
+        @media screen and (min-width: 600px) {
+            margin-bottom: 3.8rem;
+        }
     }
 
     &__socials {

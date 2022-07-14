@@ -35,8 +35,8 @@ const changeTab = (tab: TabChoices) => {
     transform: matrix(0.71, 0, inf, nan, 0, 0);
     gap: 9.6rem;
     position: relative;
-    margin-top: 9.9rem;
-    margin-bottom: 3.9rem;
+    margin-top: 5rem;
+    margin-bottom: 2.4rem;
     overflow-x: scroll;
     overflow-y: hidden;
     scrollbar-width: none;
@@ -54,6 +54,11 @@ const changeTab = (tab: TabChoices) => {
         left: 0;
         bottom: 0.2rem;
         background-color: var(--light-gray);
+    }
+
+    @media screen and (min-width: 600px) {
+        margin-top: 9.9rem;
+        margin-bottom: 3.9rem;
     }
 
     &__item {
