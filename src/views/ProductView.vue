@@ -7,6 +7,7 @@ import { ref } from "vue";
 import ProductReviewForm from "@/components/ProductReviewForm.vue";
 import ProductReviewList from "@/components/ProductReviewList.vue";
 import ProductInformation from "@/components/ProductInformation.vue";
+import ProductImageGallery from "@/components/ProductImageGallery.vue";
 
 const ProductStore = useProductStore();
 
@@ -24,7 +25,7 @@ const changeActiveTab = (tab: TabChoices) => {
     <div class="single-product">
         <!-- PRODUCT IMAGE GALLERY AND INFORMATION -->
         <div class="single-product__heading">
-            <div></div>
+            <ProductImageGallery />
             <ProductInformation />
         </div>
 
@@ -65,9 +66,14 @@ const changeActiveTab = (tab: TabChoices) => {
     &__heading {
         display: grid;
         margin-top: 6rem;
+        gap: 3.1rem;
 
         @media screen and (min-width: 992px) {
             grid-template-columns: 60% 40%;
+        }
+
+        @media screen and (min-width: 1280px) {
+            gap: 6.2rem;
         }
     }
 

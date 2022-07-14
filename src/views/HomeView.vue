@@ -11,6 +11,9 @@ const ProductStore = useProductStore();
 
 const sliderOptions = reactive({
     arrows: false,
+    classes: {
+        pagination: "splide__pagination splide__pagination--home",
+    },
 });
 </script>
 
@@ -21,11 +24,6 @@ const sliderOptions = reactive({
             <SplideSlide v-for="item in 5" :key="item">
                 <home-slider-item></home-slider-item>
             </SplideSlide>
-
-            <!-- <div class="splide__arrows">
-                <button class="splide__arrow splide__arrow--prev">Prev</button>
-                <button class="splide__arrow splide__arrow--next">Next</button>
-            </div> -->
         </Splide>
 
         <!-- PRODUCTS LIST -->
@@ -41,7 +39,7 @@ const sliderOptions = reactive({
     </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" sscoped>
 .shop-section {
     margin-top: 6.4rem;
 
@@ -50,29 +48,29 @@ const sliderOptions = reactive({
     }
 }
 
-.splide__pagination {
+.splide__pagination--home {
     bottom: 2.6em;
     gap: 1.371rem;
-}
 
-.splide__pagination__page {
-    background: #fff;
-    height: 0.91rem;
-    width: 0.91rem;
-    margin: 0;
-    opacity: 1;
-}
+    .splide__pagination__page {
+        background: #fff;
+        height: 0.91rem;
+        width: 0.91rem;
+        margin: 0;
+        opacity: 1;
 
-.splide__pagination__page:hover {
-    opacity: 1;
-}
+        &:hover {
+            opacity: 1;
+        }
 
-.splide__pagination__page.is-active {
-    background: none;
-    border: 0.1rem solid #fff;
-    transform: scale(1.4);
-    z-index: 1;
-    height: 1.6rem;
-    width: 1.6rem;
+        &.is-active {
+            background: none;
+            border: 0.1rem solid #fff;
+            transform: scale(1.4);
+            z-index: 1;
+            height: 1.6rem;
+            width: 1.6rem;
+        }
+    }
 }
 </style>
