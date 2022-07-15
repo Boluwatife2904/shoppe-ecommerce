@@ -35,12 +35,17 @@ const useCartStore = defineStore("CartStore", {
             notify({
                 type: "success",
                 text: "Product have been added to cart successfully 🎉!",
-                duration: 500
+                duration: 500,
             });
         },
 
         removeItemFromCart(slug: string) {
             this.cartItems = this.cartItems.filter((cartItem) => cartItem.slug !== slug);
+            notify({
+                type: "success",
+                text: "Product have been removed from cart successfully 🎉!",
+                duration: 500,
+            });
         },
 
         increaseCartItemCount(slug: string) {
