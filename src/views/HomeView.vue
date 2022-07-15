@@ -3,7 +3,7 @@ import { reactive } from "vue";
 import ProductCardList from "@/components/ProductCardList.vue";
 import ProductCardItem from "@/components/ProductCardItem.vue";
 import HomeSliderItem from "@/components/HomeSliderItem.vue";
-import  useProductStore from "@/stores/ProductStore";
+import useProductStore from "@/stores/ProductStore";
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
 import "@splidejs/vue-splide/css";
 
@@ -39,7 +39,7 @@ const sliderOptions = reactive({
     </div>
 </template>
 
-<style lang="scss" sscoped>
+<style lang="scss">
 .shop-section {
     margin-top: 6.4rem;
 
@@ -48,7 +48,7 @@ const sliderOptions = reactive({
     }
 }
 
-.splide__pagination--home {
+.home-page .splide__pagination--home {
     bottom: 2.6em;
     gap: 1.371rem;
 

@@ -93,7 +93,7 @@ onMounted(() => {
     }
 }
 
-.splide__slide {
+.single-product__thumbnails .splide__slide {
     opacity: 0.6;
 
     &.is-active {
@@ -104,8 +104,8 @@ onMounted(() => {
 
 .splide__pagination--product {
     bottom: -3rem !important;
-    left: 0;
-    padding: 0;
+    left: 0 !important;
+    padding: 0 !important;
     display: flex;
 
     li {
