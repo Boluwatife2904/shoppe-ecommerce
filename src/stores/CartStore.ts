@@ -36,6 +36,16 @@ export const useCartStore = defineStore("CartStore", {
         removeItemFromCart(slug: string) {
             this.cartItems = this.cartItems.filter((cartItem) => cartItem.slug !== slug);
         },
+
+        increaseCartItemCount(slug: string) {
+            const cartItemIndex = this.cartItems.findIndex((cartItem) => cartItem.slug === slug);
+            this.cartItems[cartItemIndex].count++;
+        },
+
+        decreaseCartItemCount(slug: string) {
+            const cartItemIndex = this.cartItems.findIndex((cartItem) => cartItem.slug === slug);
+            this.cartItems[cartItemIndex].count--;
+        },
     },
     getters: {
         productsInCart(state) {

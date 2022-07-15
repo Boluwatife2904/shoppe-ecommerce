@@ -31,9 +31,9 @@ const CartStore = useCartStore();
                 <p class="cart-item__price accent-text heading-5">${{ product.price }},00</p>
             </div>
             <div class="cart-item__counter flex items-center">
-                <button class="button heading-5 dark-gray-text">-</button>
+                <button class="button heading-5 dark-gray-text" @click="CartStore.decreaseCartItemCount(product.slug)">-</button>
                 <span class="heading-5 dark-gray-text">{{ product.count }}</span>
-                <button class="button heading-5 dark-gray-text">+</button>
+                <button class="button heading-5 dark-gray-text" @click="CartStore.increaseCartItemCount(product.slug)">+</button>
             </div>
         </div>
         <button class="cart-item__remove button position-absolute heading-3" @click="CartStore.removeItemFromCart(product.slug)">&times;</button>
@@ -92,6 +92,11 @@ const CartStore = useCartStore();
         @media screen and (min-width: 600px) {
             padding: 1.4rem 1.2rem;
             background: var(--light-gray);
+        }
+
+        span {
+            min-width: 2rem;
+            text-align: center;
         }
     }
 

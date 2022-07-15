@@ -29,9 +29,9 @@ const CartStore = useCartStore();
             <p class="nav-product__price accent-text">${{ product.price }},00</p>
             <div class="nav-product__quantity flex dark-gray-text">
                 <span>QTY:</span>
-                <button class="button dark-gray-text">-</button>
+                <button class="button dark-gray-text" @click="CartStore.decreaseCartItemCount(product.slug)" :disabled="product.count === 1">-</button>
                 <span>{{ product.count }}</span>
-                <button class="button dark-gray-text">+</button>
+                <button class="button dark-gray-text" @click="CartStore.increaseCartItemCount(product.slug)">+</button>
             </div>
         </div>
         <button class="nav-product__remove position-absolute button" @click="CartStore.removeItemFromCart(product.slug)">&times;</button>
@@ -77,6 +77,12 @@ const CartStore = useCartStore();
     &__quantity {
         margin-top: auto;
         gap: 0.8rem;
+
+        span {
+            flex-shrink: 0;
+            min-width: 2rem;
+            text-align: center;
+        }
     }
 
     &__remove {

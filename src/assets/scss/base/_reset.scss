@@ -15,3 +15,7 @@ textarea {
 .slider-handle {
     box-shadow: none !important;
 }
+
+button:disabled {
+    cursor: not-allowed;
+}
