@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import ProductCardList from "@/components/ProductCardList.vue";
 import ProductCardItem from "@/components/ProductCardItem.vue";
-import  useProductStore from "@/stores/ProductStore";
+import useProductStore from "@/stores/ProductStore";
 import ProductChangeSelectedTab from "@/components/ProductChangeSelectedTab.vue";
-import { ref } from "vue";
+import { ref, watchEffect } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import ProductReviewForm from "@/components/ProductReviewForm.vue";
 import ProductReviewList from "@/components/ProductReviewList.vue";
 import ProductInformation from "@/components/ProductInformation.vue";
 import ProductImageGallery from "@/components/ProductImageGallery.vue";
 
 const ProductStore = useProductStore();
+const route = useRoute();
+const router = useRouter();
 
 const similarProducts = ProductStore.allProducts.slice(0, 3);
 
@@ -19,14 +22,36 @@ const selectedTab = ref<TabChoices>("description");
 const changeActiveTab = (tab: TabChoices) => {
     selectedTab.value = tab;
 };
+
+interface Product {
+    image: string;
+    name: string;
+    price: number;
+    category: string;
+    stock: number;
+    discountValue: number;
+    variant: string;
+    slug: string;
+}
+
+const product = ref<Product>();
+
+watchEffect(() => {
+    const slug = route.params.slug as string;
+    product.value = ProductStore.singleProduct(slug);
+
+    if (route.name === "product-slug" && product.value === undefined) {
+        router.push("/page-not-found");
+    }
+});
 </script>
 
 <template>
-    <div class="single-product">
+    <div v-if="product" class="single-product">
         <!-- PRODUCT IMAGE GALLERY AND INFORMATION -->
         <div class="single-product__heading">
-            <ProductImageGallery />
-            <ProductInformation />
+            <ProductImageGallery :image="product.image" />
+            <ProductInformation :product="product" />
         </div>
 
         <!-- PRODUCT TAB CHANGER -->

@@ -6,14 +6,42 @@ import InstagramIcon from "./icons/IconInstagram.vue";
 import FacebookIcon from "./icons/IconFacebook.vue";
 import vue3starRatings from "vue3-star-ratings";
 import { ref } from "vue";
+import { useRoute } from "vue-router";
+import useCartStore from "@/stores/CartStore";
+const route = useRoute();
+const CartStore = useCartStore();
 
 const star = ref(5);
+const productCount = ref(1);
+
+interface Product {
+    image: string;
+    name: string;
+    price: number;
+    category: string;
+    stock: number;
+    discountValue: number;
+    variant: string;
+    slug: string;
+}
+
+interface Props {
+    product: Product;
+}
+
+defineProps<Props>();
+
+const addProductToCart = () => {
+    const slug = route.params.slug as string;
+    CartStore.addItemToCart(slug, productCount.value);
+    productCount.value = 1;
+};
 </script>
 
 <template>
     <div class="single-product">
-        <h3 class="single-product__name heading-2">Lira Earrings</h3>
-        <p class="single-product__price heading-4 accent-text">$ 20,00</p>
+        <h3 class="single-product__name heading-2">{{ product.name }}</h3>
+        <p class="single-product__price heading-4 accent-text">$ {{ product.price }},00</p>
 
         <div class="single-product__review flex items-center">
             <div class="single-product__rating">
@@ -26,11 +54,11 @@ const star = ref(5);
 
         <div class="single-product__quantity flex items-center">
             <div class="single-product__counter flex items-center space-between">
-                <button class="button heading-5">-</button>
-                <span class="heading-5">1</span>
-                <button class="button heading-5">+</button>
+                <button class="button heading-5" @click="productCount--">-</button>
+                <span class="heading-5">{{ productCount }}</span>
+                <button class="button heading-5" @click="productCount++">+</button>
             </div>
-            <BaseButton variant="outline-black" size="large" text="ADD TO CART" />
+            <BaseButton variant="outline-black" size="large" text="ADD TO CART" @click="addProductToCart" />
         </div>
 
         <div class="single-product__icons flex items-center">

@@ -3,6 +3,12 @@ import { Splide, SplideSlide, Options } from "@splidejs/vue-splide";
 import "@splidejs/vue-splide/css";
 import { onMounted, reactive, ref } from "vue";
 
+interface Props {
+    image: string;
+}
+
+defineProps<Props>();
+
 const thumbnails = ref<InstanceType<typeof Splide>>();
 const main = ref<InstanceType<typeof Splide>>();
 
@@ -46,7 +52,7 @@ onMounted(() => {
         <div class="single-product__thumbnails">
             <Splide :options="thumbnailOptions" ref="thumbnails">
                 <SplideSlide v-for="i in 5" :key="i">
-                    <img class="single-product__thumbnail" src="/images/product-one.png" alt="Product Image" />
+                    <img class="single-product__thumbnail" :src="image" alt="Product Image" />
                 </SplideSlide>
             </Splide>
         </div>
@@ -54,7 +60,7 @@ onMounted(() => {
         <div class="single-product__image">
             <Splide :options="mainOptions" ref="main">
                 <SplideSlide v-for="i in 5" :key="i">
-                    <img class="single-product__img" src="/images/product-one.png" alt="Product Image" />
+                    <img class="single-product__img" :src="image" alt="Product Image" />
                 </SplideSlide>
             </Splide>
         </div>

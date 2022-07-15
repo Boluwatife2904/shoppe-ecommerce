@@ -70,6 +70,9 @@ const useProductStore = defineStore("ProductStore", {
     actions: {},
     getters: {
         allProducts: (state) => state.products,
+        singleProduct: (state) => {
+            return (productSlug: string) => state.products.find((product) => product.slug === productSlug);
+        },
     },
 });
 
