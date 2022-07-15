@@ -3,6 +3,7 @@ import CartIcon from "./icons/IconCart.vue";
 import EyeIcon from "./icons/IconEye.vue";
 import HeartIcon from "./icons/IconHeart.vue";
 import { useRouter } from "vue-router";
+import { useCartStore } from "../stores/CartStore";
 
 interface Product {
     image: string;
@@ -19,12 +20,18 @@ interface Props {
     product: Product;
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
 
 const router = useRouter();
 
 const viewProduct = (slug: string) => {
     router.push({ name: "product-slug", params: { slug } });
+};
+
+const CartStore = useCartStore();
+
+const addProductToCart = () => {
+    CartStore.addItemToCart(props.product.slug, 1);
 };
 </script>
 
@@ -39,7 +46,7 @@ const viewProduct = (slug: string) => {
             <div class="product__image--overlay position-absolute flex items-center content-center">
                 <ul class="product__icons flex items-center flex-center">
                     <li class="product__icon">
-                        <base-button>
+                        <base-button @click="addProductToCart">
                             <CartIcon />
                         </base-button>
                     </li>

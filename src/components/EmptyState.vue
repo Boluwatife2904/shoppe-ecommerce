@@ -1,7 +1,8 @@
 <script setup lang="ts">
 interface Props {
-    heading: string,
-    message: string
+    type: string;
+    heading: string;
+    message: string;
 }
 
 defineProps<Props>();
@@ -10,9 +11,10 @@ defineProps<Props>();
 <template>
     <div class="empty-state text-center">
         <div class="empty-state__icon">
-            <img src="../assets/images/crying-face.png" alt="Crying Face Emoji">
+            <img v-if="type === 'shop'" src="@/assets/images/crying-face.png" alt="Crying Face Image" />
+            <img v-else-if="type === 'cart'" src="@/assets/images/empty-cart.png" alt="Empty Cart Image" />
         </div>
-        <h5 class="empty-state__heading heading-2">{{ heading }}</h5>
+        <h5 class="empty-state__heading heading-3">{{ heading }}</h5>
         <p class="empty-state__message heading-5">{{ message }}</p>
     </div>
 </template>
@@ -24,8 +26,8 @@ defineProps<Props>();
     padding: 3rem 1rem;
 
     &__icon {
-        max-width: 8rem;
-        max-height: 8rem;
+        max-width: 10rem;
+        max-height: 10rem;
         margin: 0 auto 2rem;
 
         img {

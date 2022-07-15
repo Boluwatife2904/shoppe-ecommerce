@@ -175,7 +175,7 @@ onUnmounted(() => {
                 <product-card-list v-if="filteredProducts && filteredProducts.length > 0">
                     <product-card-item v-for="product in filteredProducts" :product="product"></product-card-item>
                 </product-card-list>
-                <EmptyState v-else heading="No product found!" message="We could not find any product matching the selected filters. Kindly try out other filters to check out some of our other amazing products." />
+                <EmptyState v-else type="shop" heading="No product found!" message="We could not find any product matching the selected filters. Kindly try out other filters to check out some of our other amazing products." />
             </div>
         </div>
     </div>

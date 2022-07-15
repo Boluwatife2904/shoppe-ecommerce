@@ -1,22 +1,27 @@
 <script setup lang="ts">
+import { useCartStore } from "../stores/CartStore";
 interface Product {
-    image: string,
-    price: number
-    name: string
-    variant: string
+    image: string;
+    price: number;
+    name: string;
+    slug: string;
+    variant: string;
+    count?: number;
 }
 
 interface Props {
-    product: Product
+    product: Product;
 }
 
-defineProps<Props>()
+defineProps<Props>();
+
+const CartStore = useCartStore();
 </script>
 
 <template>
     <div class="nav-product position-relative">
         <div class="nav-product__image">
-            <img :src="product.image" :alt="product.name">
+            <img :src="product.image" :alt="product.name" />
         </div>
         <div class="nav-product__text flex flex-column">
             <h3 class="nav-product__name">{{ product.name }}</h3>
@@ -25,13 +30,11 @@ defineProps<Props>()
             <div class="nav-product__quantity flex dark-gray-text">
                 <span>QTY:</span>
                 <button class="button dark-gray-text">-</button>
-                <span>1</span>
+                <span>{{ product.count }}</span>
                 <button class="button dark-gray-text">+</button>
             </div>
         </div>
-        <button class="nav-product__remove position-absolute button">
-            &times;
-        </button>
+        <button class="nav-product__remove position-absolute button" @click="CartStore.removeItemFromCart(product.slug)">&times;</button>
     </div>
 </template>
 
@@ -39,7 +42,7 @@ defineProps<Props>()
 .nav-product {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: .8rem;
+    gap: 0.8rem;
 
     &:not(:last-child) {
         margin-bottom: 2.2rem;
@@ -73,12 +76,12 @@ defineProps<Props>()
 
     &__quantity {
         margin-top: auto;
-        gap: .8rem;
+        gap: 0.8rem;
     }
 
     &__remove {
         font-size: 1.8rem;
-        top: .8rem;
+        top: 0.8rem;
         right: -0.5rem;
         line-height: 0;
     }

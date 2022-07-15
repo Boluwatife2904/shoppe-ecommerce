@@ -1,22 +1,28 @@
 <script setup lang="ts">
+import { useCartStore } from "@/stores/CartStore";
+
 interface Product {
-    name: string
-    image: string
-    price: number,
-    variant: string
+    name: string;
+    image: string;
+    price: number;
+    variant: string;
+    count?: number;
+    slug: string;
 }
 
 interface Props {
-    product: Product
+    product: Product;
 }
 
-defineProps<Props>()
+defineProps<Props>();
+
+const CartStore = useCartStore();
 </script>
 
 <template>
     <div class="cart-item position-relative">
         <div class="cart-item__image">
-            <img :src="product.image" :alt="product.name">
+            <img :src="product.image" :alt="product.name" />
         </div>
         <div class="cart-item__details flex items-start space-between">
             <div class="cart-item__info">
@@ -26,11 +32,11 @@ defineProps<Props>()
             </div>
             <div class="cart-item__counter flex items-center">
                 <button class="button heading-5 dark-gray-text">-</button>
-                <span class="heading-5 dark-gray-text">1</span>
+                <span class="heading-5 dark-gray-text">{{ product.count }}</span>
                 <button class="button heading-5 dark-gray-text">+</button>
             </div>
         </div>
-        <button class="cart-item__remove button position-absolute heading-3">&times;</button>
+        <button class="cart-item__remove button position-absolute heading-3" @click="CartStore.removeItemFromCart(product.slug)">&times;</button>
     </div>
 </template>
 
@@ -39,13 +45,13 @@ defineProps<Props>()
     display: grid;
     grid-template-columns: 13.6rem auto;
     gap: 2.4rem;
-    margin-bottom: 3.0rem;
+    margin-bottom: 3rem;
 
     @media screen and (min-width: 600px) {
         gap: 3.9rem;
         padding-bottom: 3.9rem;
         margin-bottom: 3.9rem;
-        border-bottom: .1rem solid var(--gray);
+        border-bottom: 0.1rem solid var(--gray);
     }
 
     &__image {
@@ -67,7 +73,7 @@ defineProps<Props>()
     }
 
     &__name {
-        margin-bottom: .4rem;
+        margin-bottom: 0.4rem;
 
         @media screen and (min-width: 600px) {
             margin-bottom: 1.4rem;
@@ -79,7 +85,7 @@ defineProps<Props>()
     }
 
     &__counter {
-        border-radius: .4rem;
+        border-radius: 0.4rem;
         padding: 0;
         gap: 2.4rem;
 

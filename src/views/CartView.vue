@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
-import { useProductStore } from "@/stores/ProductStore";
 import CartShippingCalculator from "@/components/CartShippingCalculator.vue";
 import CartProductList from "@/components/CartProductList.vue";
 import CartProductItem from "@/components/CartProductItem.vue";
 import CartApplyCoupon from "@/components/CartApplyCoupon.vue";
+import { useCartStore } from "@/stores/CartStore";
+import EmptyState from "@/components/EmptyState.vue";
 
-const ProductStore = useProductStore();
-
-const threeProducts = ProductStore.products.slice(0, 3);
+const CartStore = useCartStore();
 </script>
 
 <template>
@@ -16,16 +15,17 @@ const threeProducts = ProductStore.products.slice(0, 3);
         <h2 class="shopping-cart__title heading-1 page__title">Shopping Cart</h2>
         <div class="shopping-cart__wrapper">
             <div class="shopping-cart__items">
-                <cart-product-list>
-                    <CartProductItem v-for="product in threeProducts" :product="product" />
+                <cart-product-list v-if="CartStore.productsInCart && CartStore.productsInCart.length > 0">
+                    <CartProductItem v-for="product in CartStore.productsInCart" :product="product" />
                 </cart-product-list>
+                <EmptyState v-else type="cart" heading="Cart is Empty!" message="You've added any product to your cart. When You add a product to your cart, they'll show up here." />
                 <CartApplyCoupon />
             </div>
             <div class="shopping-cart__totals cart-totals">
                 <h3 class="order-section__title">Cart Totals</h3>
                 <div class="cart-totals__subtotal">
                     <span class="title heading-5">SUBTOTAL</span>
-                    <div class="content heading-5 dark-gray-text">$ 65,00</div>
+                    <div class="content heading-5 dark-gray-text">$ {{ CartStore.totalAmountOfProductsInCart }},00</div>
                 </div>
                 <div class="cart-totals__shipping">
                     <span class="title heading-5">SHIPPING</span>
@@ -36,7 +36,7 @@ const threeProducts = ProductStore.products.slice(0, 3);
                 </div>
                 <div class="cart-totals__total flex items-center space-between">
                     <span class="body-large">TOTAL</span>
-                    <span class="body-large">$ 87,00</span>
+                    <span class="body-large">$ {{ CartStore.totalAmountOfProductsInCart }},00</span>
                 </div>
                 <div class="cart-totals__checkout">
                     <router-link :to="{ name: 'checkout' }" class="navigation__link button button--large flex items-center content-center button--solid-black"> CHECKOUT</router-link>
