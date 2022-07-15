@@ -13,12 +13,11 @@ const CartStore = useCartStore();
 <template>
     <div class="shopping-cart page-layout-margin">
         <h2 class="shopping-cart__title heading-1 page__title">Shopping Cart</h2>
-        <div class="shopping-cart__wrapper">
+        <div v-if="CartStore.numberOfProductsInCart > 0" class="shopping-cart__wrapper">
             <div class="shopping-cart__items">
                 <cart-product-list v-if="CartStore.productsInCart && CartStore.productsInCart.length > 0">
                     <CartProductItem v-for="product in CartStore.productsInCart" :product="product" />
                 </cart-product-list>
-                <EmptyState v-else type="cart" heading="Cart is Empty!" message="You've added any product to your cart. When You add a product to your cart, they'll show up here." />
                 <CartApplyCoupon />
             </div>
             <div class="shopping-cart__totals cart-totals">
@@ -43,6 +42,7 @@ const CartStore = useCartStore();
                 </div>
             </div>
         </div>
+        <EmptyState v-else :has-action="true" type="cart" heading="Cart is Empty!" message="You've added any product to your cart. When You add a product to your cart, they'll show up here." />
     </div>
 </template>
 

@@ -3,6 +3,7 @@ interface Props {
     type: string;
     heading: string;
     message: string;
+    hasAction?: boolean;
 }
 
 defineProps<Props>();
@@ -16,6 +17,7 @@ defineProps<Props>();
         </div>
         <h5 class="empty-state__heading heading-3">{{ heading }}</h5>
         <p class="empty-state__message heading-5">{{ message }}</p>
+        <router-link v-if="hasAction" :to="{ name: 'shop' }" class="navigation__link button button--large flex items-center content-center button--solid-black empty-stategi__action"> Let's go Shopping ☺️</router-link>
     </div>
 </template>
 
@@ -40,6 +42,10 @@ defineProps<Props>();
 
     &__heading {
         margin-bottom: 2rem;
+    }
+
+    &__action {
+        margin-top: 3rem;
     }
 }
 </style>
