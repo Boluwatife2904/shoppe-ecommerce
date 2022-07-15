@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCartStore } from "@/stores/CartStore";
+import useCartStore  from "@/stores/CartStore";
 
 interface Product {
     name: string;

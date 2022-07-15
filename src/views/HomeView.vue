@@ -3,7 +3,7 @@ import { reactive } from "vue";
 import ProductCardList from "@/components/ProductCardList.vue";
 import ProductCardItem from "@/components/ProductCardItem.vue";
 import HomeSliderItem from "@/components/HomeSliderItem.vue";
-import { useProductStore } from "@/stores/ProductStore";
+import  useProductStore from "@/stores/ProductStore";
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
 import "@splidejs/vue-splide/css";
 

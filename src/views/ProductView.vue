@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ProductCardList from "@/components/ProductCardList.vue";
 import ProductCardItem from "@/components/ProductCardItem.vue";
-import { useProductStore } from "@/stores/ProductStore";
+import  useProductStore from "@/stores/ProductStore";
 import ProductChangeSelectedTab from "@/components/ProductChangeSelectedTab.vue";
 import { ref } from "vue";
 import ProductReviewForm from "@/components/ProductReviewForm.vue";

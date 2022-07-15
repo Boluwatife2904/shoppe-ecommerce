@@ -4,7 +4,7 @@ import CartShippingCalculator from "@/components/CartShippingCalculator.vue";
 import CartProductList from "@/components/CartProductList.vue";
 import CartProductItem from "@/components/CartProductItem.vue";
 import CartApplyCoupon from "@/components/CartApplyCoupon.vue";
-import { useCartStore } from "@/stores/CartStore";
+import useCartStore from "@/stores/CartStore";
 import EmptyState from "@/components/EmptyState.vue";
 
 const CartStore = useCartStore();

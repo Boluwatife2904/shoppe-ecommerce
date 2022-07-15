@@ -3,7 +3,7 @@ import CartIcon from "./icons/IconCart.vue";
 import EyeIcon from "./icons/IconEye.vue";
 import HeartIcon from "./icons/IconHeart.vue";
 import { useRouter } from "vue-router";
-import { useCartStore } from "../stores/CartStore";
+import useCartStore from "../stores/CartStore";
 
 interface Product {
     image: string;

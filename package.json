@@ -9,6 +9,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@kyvg/vue3-notification": "^2.3.5",
     "@splidejs/vue-splide": "^0.6.7",
     "@vueform/slider": "^2.0.10",
     "pinia": "^2.0.13",

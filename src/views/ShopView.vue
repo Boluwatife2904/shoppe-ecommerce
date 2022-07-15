@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ProductCardList from "@/components/ProductCardList.vue";
 import ProductCardItem from "@/components/ProductCardItem.vue";
-import { useProductStore } from "@/stores/ProductStore";
+import useProductStore from "@/stores/ProductStore";
 import { computed, onMounted, onUnmounted, ref } from "vue";
 import SearchIcon from "../components/icons/IconSearch.vue";
 import Slider from "@vueform/slider";
@@ -19,7 +19,7 @@ interface Product {
     stock: number;
     discountValue: number;
     variant: string;
-    slug: string
+    slug: string;
 }
 
 const searchValue = ref("");

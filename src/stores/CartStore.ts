@@ -1,5 +1,6 @@
-import { defineStore } from "pinia";
-import { useProductStore } from "./ProductStore";
+import { defineStore, acceptHMRUpdate } from "pinia";
+import useProductStore from "./ProductStore";
+import { notify } from "@kyvg/vue3-notification";
 
 interface CartItem {
     slug: string;
@@ -16,7 +17,7 @@ interface CartProduct extends CartItem {
     discountValue: number;
 }
 
-export const useCartStore = defineStore("CartStore", {
+const useCartStore = defineStore("CartStore", {
     state: () => {
         return {
             cartItems: [] as CartItem[],
@@ -31,6 +32,11 @@ export const useCartStore = defineStore("CartStore", {
             } else {
                 this.cartItems.push({ slug, count });
             }
+            notify({
+                type: "success",
+                text: "Product have been added to cart successfully 🎉!",
+                duration: 500
+            });
         },
 
         removeItemFromCart(slug: string) {
@@ -74,3 +80,10 @@ export const useCartStore = defineStore("CartStore", {
         },
     },
 });
+
+// make sure to pass the right store definition, `useAuth` in this case.
+if (import.meta.hot) {
+    import.meta.hot.accept(acceptHMRUpdate(useCartStore, import.meta.hot));
+}
+
+export default useCartStore;

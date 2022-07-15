@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
-import { useCartStore } from "@/stores/CartStore";
+import useCartStore from "@/stores/CartStore";
 import NavigationCartItem from "./NavigationCartItem.vue";
 import { watch } from "vue";
 import { useRoute } from "vue-router";
