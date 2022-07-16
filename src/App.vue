@@ -7,7 +7,7 @@ import TheHeader from "@/components/TheHeader.vue";
 <template>
     <main class="main-layout">
         <TheHeader />
-        <RouterView />
+        <RouterView :key="$route.fullPath" />
         <TheFooter />
         <notifications position="bottom right" classes="app-notification" width="320px" />
     </main>
